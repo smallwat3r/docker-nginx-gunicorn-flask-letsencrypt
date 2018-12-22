@@ -56,7 +56,7 @@ Start docker-compose
 ```sh
 make dc-start
 ```
-Your web app should be now accessible at your domain using SSL certificates !
+Your web app should be now accessible at your domain using SSL certificates 🎉
 
 Stop docker
 ```sh
