@@ -41,7 +41,7 @@ Obtain the certificate
 sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --email <<youremail@email.com>> -d <<yourdomain.com>>
 ```
 
-Replace also `<<youremail@email.com>>` and `<<yourdomain.com>>` by your actual email and domain name in `nginx/sites-enabled/nginx.conf`   
+Replace `<<youremail@email.com>>` and `<<yourdomain.com>>` by your actual email and domain name in `nginx/sites-enabled/nginx.conf`   
 
 Letsencrypt certificates expires after 90 days.  
 If you need to renew these run the below command (note that you can automatically renew it using a cron job)
@@ -52,11 +52,10 @@ sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default 
 
 ### Usage   
 ---
-Start the docker-compose
+Start docker-compose
 ```sh
 make dc-start
 ```
-
 Your web app should be now accessible at your domain using SSL certificates !
 
 Stop docker
