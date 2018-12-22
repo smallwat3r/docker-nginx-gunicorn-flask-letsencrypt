@@ -44,11 +44,11 @@ sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --email <<youremail
 
 Replace also `<<youremail@email.com>>` and `<<yourdomain.com>>` by your actual email and domain name in `nginx/sites-enabled/nginx.conf`   
 
-Letsencrypt certificates expires after 90 days. When we need to renew run   
+Letsencrypt certificates expires after 90 days.  
+If you need to renew these run the below command (note that you can automatically renew it using a cron job)
 ```sh
 sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default --email <<youremail@email.com>> -d <<yourdomain.com>>
 ```
-Note that you can automatically renew it using a cron job.  
 
 
 ### Usage   
