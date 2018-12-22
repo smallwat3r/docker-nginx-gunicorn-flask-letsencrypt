@@ -4,7 +4,7 @@
  @author    Matthieu Petiteau - smallwat3r
  @contact   mpetiteau.pro@gmail.com
 
- Config file. Load all config and secrets from credentials.yml in root.
+ Config file. Load all config and secrets from credentials.yml
 """
 
 import yaml
