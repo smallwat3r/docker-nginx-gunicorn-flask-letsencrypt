@@ -1,0 +1,20 @@
+flask_app:
+    restart: always
+    build: ./core
+    expose:
+        - "5000"
+    volumes:
+        - .:/usr/src/app
+    command: gunicorn -b 0.0.0.0:5000 flask_app:app
+
+nginx:
+    restart: always
+    build: ./nginx
+    ports:
+        - "80:80"
+        - "443:443"
+    volumes:
+        - /local/path/to/www:/usr/share/nginx/html
+        - /etc/letsencrypt:/etc/letsencrypt
+    links:
+        - flask_app:flask_app
