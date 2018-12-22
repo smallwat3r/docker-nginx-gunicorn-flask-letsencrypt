@@ -6,14 +6,13 @@ Base Docker Images
 flask / gunicorn == alpine:3.7  
 nginx == nginx:latest  
 
-### Requirements for testing (flask only)  
+### Requirements for testing (flask only)
 ---
 python 3.6+   
 virtualenv `pip3 install virtualenv`  
 
 
-### Testing the flask app   
----
+#### Testing the flask app   
 Make sure dev.sh is executable by running   
 ```sh
 chmod +x dev.sh
