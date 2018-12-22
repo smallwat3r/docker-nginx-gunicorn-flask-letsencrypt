@@ -50,7 +50,7 @@ sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default 
 ```
 
 
-### ✅ Usage   
+### ✅ Firing up   
 ---
 Start docker-compose
 ```sh
