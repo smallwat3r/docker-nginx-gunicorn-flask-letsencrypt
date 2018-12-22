@@ -1,12 +1,12 @@
-## docker-nginx-gunicorn-flask with Letsencrypt   
+# docker-nginx-gunicorn-flask with Letsencrypt   
 
 This repository contains files necessary for building Nginx + Gunicorn + Flask with Letsencrypt using Docker and docker-compose.     
 
-Base Docker Images   
+📎 Base Docker Images   
 flask / gunicorn == alpine:3.7  
 nginx == nginx:latest  
 
-### Requirements for testing (flask only)
+### ⚠️ Requirements for testing (flask only)
 ---
 python 3.6+   
 virtualenv `pip3 install virtualenv`  
@@ -29,7 +29,7 @@ You should be able to access the app at 0.0.0.0:5000
 Means everything's fine and you can continue the installation.   
 
 
-### Installation
+### ⚙️ Installation
 ---
 Download the Letsencrypt client  
 ```sh
@@ -50,7 +50,7 @@ sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default 
 ```
 
 
-### Usage   
+### ✅ Usage   
 ---
 Start docker-compose
 ```sh
