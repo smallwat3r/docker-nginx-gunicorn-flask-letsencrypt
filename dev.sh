@@ -30,6 +30,6 @@ else
     build "[+] Building virtual environment"
 fi
 
-export FLASK_APP=frontend_soda_app
+export FLASK_APP=flask_app
 export FLASK_ENV=development
 python3 -m flask run --host='0.0.0.0'
