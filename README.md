@@ -24,9 +24,9 @@ Run the script
 ./dev.sh
 ```
 
-This will create a vitualenv under `/core` with requited packages.   
-You should be able to access the app at 0.0.0.0:5000  
-Means everything's fine and you can continue the installation.   
+This will create a vitualenv under `/core` with the required packages.   
+You should be able to access the app at `0.0.0.0:5000` 
+Means everything's fine and you can continue the set-up process.   
 
 
 ### ⚙️ Letsencrypt Installation
