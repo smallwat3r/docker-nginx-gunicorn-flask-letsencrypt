@@ -7,7 +7,11 @@
  Main - Run application.
 """
 
-from flask import render_template, send_from_directory, request
+from flask import (
+    render_template,
+    send_from_directory,
+    request
+)
 from . import app
 
 
