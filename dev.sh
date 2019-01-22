@@ -1,6 +1,10 @@
 #! /bin/bash
-
-# Author: Matthieu Petiteau - smallwat3r
+# File              : dev.sh
+# Author            : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
+# Date              : Tue 22 Jan 11:17:11 2019
+# Last Modified Date: Tue 22 Jan 11:17:11 2019
+# Last Modified By  : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
+#
 # Start a flask development environment server
 
 build()

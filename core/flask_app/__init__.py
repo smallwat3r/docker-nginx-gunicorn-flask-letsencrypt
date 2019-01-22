@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# File              : __init__.py
+# Author            : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
+# Date              : Tue 22 Jan 11:16:09 2019
+# Last Modified Date: Tue 22 Jan 11:16:09 2019
+# Last Modified By  : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
 
 """
- @author    Matthieu Petiteau - smallwat3r
- @contact   mpetiteau.pro@gmail.com
-
  Init Flask application. Must be run as a module.
 """
 
@@ -16,12 +19,11 @@ from werkzeug.contrib.fixers import ProxyFix
 import os
 import yaml
 
-ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
-TEMPLATES = os.path.join(ROOT_PATH, 'global_templates')
-secret = yaml.load(stream=open(file="{p}/credentials.yml".format(p=ROOT_PATH)))
+__ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+_SECRET = yaml.load(open("{p}/credentials.yml".format(p=__ROOT_PATH)))
 
-app = Flask(__name__, template_folder=TEMPLATES, static_folder="static")
+app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
-app.secret_key = secret['session_key']
+app.secret_key = _SECRET['session_key']
 
 import flask_app.serve

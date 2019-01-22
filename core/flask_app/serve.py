@@ -1,11 +1,12 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-"""
- @author    Matthieu Petiteau - smallwat3r
- @contact   mpetiteau.pro@gmail.com
-
- Main - Run application.
-"""
+# File              : serve.py
+# Author            : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
+# Date              : Tue 22 Jan 11:15:37 2019
+# Last Modified Date: Tue 22 Jan 11:15:37 2019
+# Last Modified By  : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
+#
+# Main
 
 from flask import (
     render_template,
