@@ -6,17 +6,19 @@ This repository contains files necessary for building Nginx + Gunicorn + Flask w
 flask / gunicorn == alpine:3.7  
 nginx == nginx:latest  
 
-### ⚠️ Requirements for testing (flask only)
+### ⚠️ Requirements
 ---
-python 3.6+   
-virtualenv `pip3 install virtualenv`  
+
+* python 3.6+   
+* virtualenv `pip3 install virtualenv`  
+* docker and docker-compose   
+* make  
 
 
-#### Testing the flask app   
+#### Testing the flask app (flask only)   
 Make sure dev.sh is executable by running   
 ```sh
 chmod +x dev.sh
-
 ```
 
 Run the script  
@@ -25,8 +27,7 @@ Run the script
 ```
 
 This will create a vitualenv under `/core` with the required packages.   
-You should be able to access the app at `0.0.0.0:5000` 
-Means everything's fine and you can continue the set-up process.   
+You should now be able to access the app at `0.0.0.0:5000` .   
 
 
 ### ⚙️ Letsencrypt Installation
@@ -38,15 +39,15 @@ sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
 
 Obtain the certificate
 ```sh
-sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --email <<youremail@email.com>> -d <<yourdomain.com>>
+sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --email YOUREMAIL@EMAIL.COM -d YOURDOMAINNAME.COM
 ```
 
-Replace `<<youremail@email.com>>` and `<<yourdomain.com>>` by your actual email and domain name in `nginx/sites-enabled/nginx.conf`   
+Replace `YOURDOMAINNAME.COM` by your actual email and domain name in `nginx/sites-enabled/nginx.conf`   
 
 Letsencrypt certificates expires after 90 days.  
 If you need to renew these run the below command (note that you can automatically renew it using a cron job)
 ```sh
-sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default --email <<youremail@email.com>> -d <<yourdomain.com>>
+sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default --email YOUREMAIL@EMAIL.COM -d YOURDOMAINNAME.COM
 ```
 
 

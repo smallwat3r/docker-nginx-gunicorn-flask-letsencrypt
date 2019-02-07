@@ -1,25 +1,35 @@
 # File              : docker-compose.yml
-# Author            : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
-# Date              : Tue 22 Jan 11:17:22 2019
-# Last Modified Date: Tue 22 Jan 11:17:22 2019
-# Last Modified By  : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
-flask_app:
-    restart: always
-    build: ./core
-    expose:
-        - "5000"
-    volumes:
-        - .:/usr/src/app
-    command: gunicorn -b 0.0.0.0:5000 flask_app:app
+# Author            : Matthieu Petiteau <mpetiteau.pro@gmail.com>
+# Date              : Fri  1 Feb 21:02:37 2019
+# Last Modified Date: Thu  7 Feb 16:11:30 2019
+# Last Modified By  : Matthieu Petiteau <mpetiteau.pro@gmail.com>
 
-nginx:
-    restart: always
-    build: ./nginx
-    ports:
-        - "80:80"
-        - "443:443"
-    volumes:
-        - /local/path/to/www:/usr/share/nginx/html
-        - /etc/letsencrypt:/etc/letsencrypt
-    links:
-        - flask_app:flask_app
+version: "3"
+
+services:
+    nginx:
+        restart: always
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - /local/path/to/www:/usr/share/nginx/html
+            - /etc/letsencrypt:/etc/letsencrypt
+        links:
+            - flask_app:flask_app
+    flask_app:
+        restart: always
+        build:
+            context: ./core
+            dockerfile: Dockerfile
+        expose:
+            - "5000"
+        volumes:
+            - .:/usr/src/app
+        environment:
+            - FLASK_ENV=development
+        command: gunicorn -b 0.0.0.0:5000 flask_app:app
+
