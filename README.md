@@ -3,8 +3,8 @@
 This repository contains files necessary for building Nginx + Gunicorn + Flask with Letsencrypt using Docker and docker-compose.     
 
 📎 Base Docker Images   
-flask / gunicorn == alpine:3.7  
-nginx == nginx:latest  
+* alpine:3.7  
+* nginx:latest  
 
 ### ⚠️ Requirements
 ---
