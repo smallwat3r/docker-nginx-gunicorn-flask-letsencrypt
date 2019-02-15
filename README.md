@@ -1,53 +1,57 @@
-# docker-nginx-gunicorn-flask with Letsencrypt   
+# docker-nginx-gunicorn-flask-letsencrypt
 
-This repository contains files necessary for building Nginx + Gunicorn + Flask with Letsencrypt using Docker and docker-compose.     
+This repository contains necessary files and configs to build Nginx + Gunicorn + Flask with Letsencrypt using Docker and docker-compose.     
 
-### 📎 Base Docker Images   
+### Base Docker Images 📎
+---
 
 ```
++---------------------------------------+
 | service            | image  | version |
 +====================|========|=========+
 | Flask and Gunicorn | alpine | 3.7     |
 +--------------------|--------|---------+
 | Nginx              | nginx  | latest  |
-+--------------------|--------|---------+
++---------------------------------------+
 ```   
 
-### ⚠️  Requirements
+### Requirements ⚠️  
 ---
 
 * docker and docker-compose   
 * make  
 
-### ⚙️  Letsencrypt Installation
+**Make sure to replace `YOUREMAIL@EMAIL.COM` and `YOURDOMAINNAME.COM` by your actual email and domain name.**    
+**Same thing for the values in the nginx config file at `nginx/sites-enabled/nginx.conf`**   
+
+
+### Letsencrypt set-up ⚙️
 ---
-Download the Letsencrypt client  
+Download the Letsencrypt client
 ```sh
-sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
+$ sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
 ```
 
 Obtain the certificate
 ```sh
-sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --email YOUREMAIL@EMAIL.COM -d YOURDOMAINNAME.COM
-```
+$ sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --email YOUREMAIL@EMAIL.COM -d YOURDOMAINNAME.COM
+```  
 
-Replace `YOURDOMAINNAME.COM` by your actual email and domain name in `nginx/sites-enabled/nginx.conf`   
-
-Letsencrypt certificates expires after 90 days.  
-If you need to renew these run the below command (note that you can automatically renew it using a cron job)
+_Letsencrypt certificates expires after 90 days._  
+_If you need to renew these run the below command (note that you can automatically renew it using a cron job)_
 ```sh
-sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default --email YOUREMAIL@EMAIL.COM -d YOURDOMAINNAME.COM
+$ sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default --email YOUREMAIL@EMAIL.COM -d YOURDOMAINNAME.COM
 ```
 
-### ✅ Firing up   
+### Firing up ✅ 
 ---
-Start docker-compose
+**Start**
 ```sh
-make dc-start
+$ make dc-start
 ```
-Your web app should be now accessible at your domain using SSL certificates 🎉
+_Your web app should be now accessible at your domain with SSL certificates 🎉_
 
-Stop docker
+**Stop**
 ```sh
-stop dc-stop
+$ make dc-stop
 ``` 
