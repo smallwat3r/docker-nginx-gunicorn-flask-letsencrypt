@@ -57,11 +57,11 @@ $ make renew-le-cert
 ---
 **Start application**
 ```sh
-$ make dc-start
+$ sudo make dc-start
 ```
 _Your web app should be now accessible at your domain with SSL certificates 🎉_
 
 **Stop application**
 ```sh
-$ make dc-stop
+$ sudo make dc-stop
 ``` 
