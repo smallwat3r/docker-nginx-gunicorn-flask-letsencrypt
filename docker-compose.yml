@@ -12,11 +12,13 @@ services:
         build:
             context: ./nginx
             dockerfile: Dockerfile
+            args:
+                DOMAIN: ${NGX_DOMAIN}
+                FLASK: ${FLASK_APP_NAME}
         ports:
             - "80:80"
             - "443:443"
         volumes:
-            - /local/path/to/www:/usr/share/nginx/html
             - /etc/letsencrypt:/etc/letsencrypt
         links:
             - flask_app:flask_app
@@ -31,4 +33,4 @@ services:
             - .:/usr/src/app
         environment:
             - FLASK_ENV=development
-            - FLASK_SESSION_KEY=super_secret_key
+            - FLASK_SESSION_KEY=${FLASK_SESSION_KEY}
