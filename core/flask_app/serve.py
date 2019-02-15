@@ -34,5 +34,5 @@ def error_404(error):
 @app.context_processor
 def inject_global():
     return {
-        'user': 'Smallwat3r'
+        'user': 'Phytonista'
     }
