@@ -1,7 +1,7 @@
 include .env
 
 
-install-le-cert:
+install-le-client:
 	sudo sh scripts/letsencrypt_install.sh ${SSL_EMAIL} ${NGX_DOMAIN};
 
 renew-le-cert:

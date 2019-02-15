@@ -50,7 +50,7 @@ Wait and follow the different instructions.
 
 _Note: Free Letsencrypt cert are only available for 90 days. To renew the cert run_
 ```sh
-$ make renew-le-client
+$ make renew-le-cert
 ```
 
 ### Firing up ✅ 
