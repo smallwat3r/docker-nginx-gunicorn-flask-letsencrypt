@@ -60,6 +60,8 @@ $ make renew-le-cert
 $ sudo make dc-start
 ```
 _Your web app should be now accessible at your domain with SSL certificates 🎉_
+![Alt text](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/screenshot.png)    
+
 
 **Stop application**
 ```sh
