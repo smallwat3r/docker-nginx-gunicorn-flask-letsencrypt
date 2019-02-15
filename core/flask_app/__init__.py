@@ -6,10 +6,6 @@
 # Last Modified Date: Thu  7 Feb 16:23:49 2019
 # Last Modified By  : Matthieu Petiteau <mpetiteau.pro@gmail.com>
 
-__author__ = "Matthieu Petiteau"
-__maintainer__ = "Matthieu Petiteau"
-__email__ = "mpetiteau.pro@gmail.com"
-
 import os
 from flask import Flask
 from werkzeug.contrib.fixers import ProxyFix
