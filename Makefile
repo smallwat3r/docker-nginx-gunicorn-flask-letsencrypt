@@ -5,7 +5,7 @@ install-le-cert:
 	sudo sh scripts/letsencrypt_install.sh ${SSL_EMAIL} ${NGX_DOMAIN};
 
 renew-le-cert:
-	sudo sh scripts/letsencrypt_reniew.sh ${SSL_EMAIL} ${NGX_DOMAIN};
+	sudo sh scripts/letsencrypt_renew.sh ${SSL_EMAIL} ${NGX_DOMAIN};
 
 dc-start:
 	@docker-compose stop;
