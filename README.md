@@ -2,7 +2,7 @@
 
 This repository contains necessary files and configs to build Nginx + Gunicorn + Flask with Letsencrypt using Docker and docker-compose.     
 
-**Note: Tested and working on Ubuntu 16.04 and 18.04**
+**Note: Tested on Ubuntu 16.04 and 18.04**
 
 ### Base Docker Images 📎
 ---
