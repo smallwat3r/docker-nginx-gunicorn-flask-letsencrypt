@@ -20,8 +20,10 @@ This repository contains necessary files and configs to build Nginx + Gunicorn +
 ### Requirements ⚠️  
 ---
 
-* docker and docker-compose   
-* make  
+* **docker** - _[install cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)_
+* **docker-compose** - _[install cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/bb4f986dae4cb2fac8f26c8557517dbd)_
+* **make** - `sudo apt install make`
+* **a domain name linked to your server**   
 
 
 ### Set-up & Installation ⚙️
