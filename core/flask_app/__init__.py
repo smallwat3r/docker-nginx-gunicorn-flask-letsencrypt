@@ -6,7 +6,10 @@
 # Last Modified Date: Thu  7 Feb 16:23:49 2019
 # Last Modified By  : Matthieu Petiteau <mpetiteau.pro@gmail.com>
 
+"""Init app."""
+
 import os
+
 from flask import Flask
 from werkzeug.contrib.fixers import ProxyFix
 
