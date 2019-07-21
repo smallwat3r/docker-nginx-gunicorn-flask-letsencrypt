@@ -7,9 +7,9 @@
 # Last Modified By  : Matthieu Petiteau - smallwat3r <mpetiteau.pro@gmail.com>
 
 """Views."""
+from flask import render_template, request, send_from_directory
 
 from . import app
-from flask import render_template, request, send_from_directory
 
 
 @app.route("/")

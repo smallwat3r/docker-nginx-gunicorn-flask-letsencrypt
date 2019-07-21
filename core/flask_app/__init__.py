@@ -7,7 +7,6 @@
 # Last Modified By  : Matthieu Petiteau <mpetiteau.pro@gmail.com>
 
 """Init app."""
-
 import os
 
 from flask import Flask

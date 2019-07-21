@@ -7,7 +7,6 @@
 # Last Modified By  : Matthieu Petiteau <mpetiteau.pro@gmail.com>
 
 """Flask environment config."""
-
 import os
 
 
