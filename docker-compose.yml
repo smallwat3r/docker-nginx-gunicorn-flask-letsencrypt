@@ -32,5 +32,5 @@ services:
         volumes:
             - .:/usr/src/app
         environment:
-            - FLASK_ENV=development
+            - FLASK_ENV=${FLASK_ENV}
             - FLASK_SESSION_KEY=${FLASK_SESSION_KEY}
