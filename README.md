@@ -35,10 +35,12 @@ In the `.env` file, enter your application details for the below variables.
 SSL_EMAIL=myemail@myemail.com
 NGX_DOMAIN=mysuperwebsite.com
 FLASK_SESSION_KEY=super_secret_key
+FLASK_ENV=development
 ```
 *_SSL_EMAIL: Email address for Letsencrypt SSL certificate_   
 *_NGX_DOMAIN: Domain name for Nginx config and Letsencrypt SSL certificate_   
 *_FLASK_SESSION_KEY: Secret Key for Flask Session. It can be whatever you want. ie. 6d8dg8f4-49f493bf9-h30f489h9n_   
+*_FLASK_ENV: Python application environment development / production.   
 
 #### 2) SSL Certificates
 
