@@ -16,7 +16,8 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
 configurations = {
-    'development': 'flask_app.config.DefaultConfig'
+    'development': 'flask_app.config.DefaultConfig',
+    'production': 'flask_app.config.ProductionConfig'
 }
 app.config.from_object(configurations[os.getenv('FLASK_ENV')])
 

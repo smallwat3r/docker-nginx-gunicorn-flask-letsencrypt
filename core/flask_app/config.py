@@ -15,3 +15,9 @@ class DefaultConfig:
 
     DEBUG = True
     SESSION_KEY = os.getenv('FLASK_SESSION_KEY')
+
+
+class ProductionConfig(DefaultConfig):
+    """Production config."""
+
+    DEBUG = False
