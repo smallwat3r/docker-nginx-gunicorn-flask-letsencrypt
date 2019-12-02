@@ -25,6 +25,11 @@ This repository contains necessary files and configs to build Nginx + Gunicorn +
 * **make** - `sudo apt install make`
 * **a domain name linked to your server**
 
+Add user to the `docker` group on server  
+```sh
+sudo usermod -aG docker $USER
+```
+Log out and log back in for changes to apply.  
 
 ### Set-up & Installation ⚙️
 ---
