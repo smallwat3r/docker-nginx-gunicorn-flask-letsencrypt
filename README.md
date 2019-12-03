@@ -4,7 +4,7 @@ This repository contains necessary files and configs to build Nginx + Gunicorn +
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
-### Base Docker Images 📎
+### 📎 Base Docker Images
 ---
 
 ```
@@ -17,7 +17,7 @@ This repository contains necessary files and configs to build Nginx + Gunicorn +
 +---------------------------------------+
 ```
 
-### Requirements ⚠️
+### ⚠️ Requirements
 ---
 
 * **docker** - _[install cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)_
@@ -31,7 +31,7 @@ sudo usermod -aG docker $USER
 ```
 Log out and log back in for changes to apply.  
 
-### Set-up & Installation ⚙️
+### ⚙️ Set-up & Installation
 ---
 
 #### 1) Define applications details
@@ -62,13 +62,13 @@ _Note: Free Letsencrypt cert are only available for 90 days. To renew the cert r
 $ make renew-le-cert
 ```
 
-### Firing up ✅
+### ✅ Firing up
 ---
 **Start application**
 ```sh
 $ sudo make dc-start
 ```
-_Your web app should be now accessible at your domain with SSL certificates 🎉_   
+_ 🎉 Your web app should be now accessible at your domain with SSL certificates behind Nginx 🎉_   
 ![Alt text](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/screenshot.png)
 
 
