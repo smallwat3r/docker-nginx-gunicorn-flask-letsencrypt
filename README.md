@@ -68,7 +68,7 @@ $ make renew-le-cert
 ```sh
 $ sudo make dc-start
 ```
-_ 🎉 Your web app should be now accessible at your domain with SSL certificates behind Nginx 🎉_   
+ 🎉 Your web app should be now accessible at your domain with SSL certificates behind Nginx 🎉   
 ![Alt text](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/screenshot.png)
 
 
