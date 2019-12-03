@@ -4,7 +4,7 @@ This repository contains necessary files and configs to build Nginx + Gunicorn +
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
-### 📎 Base Docker Images
+### 🐳 Base Docker Images
 ---
 
 ```
