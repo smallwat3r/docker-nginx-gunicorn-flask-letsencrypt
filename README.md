@@ -83,5 +83,4 @@ See [LICENSE](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencr
 
 ## Contact
 
-Please report issues or questions here:
-https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/issues
+Please report issues or questions [here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/issues).
