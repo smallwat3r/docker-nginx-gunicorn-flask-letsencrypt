@@ -4,8 +4,7 @@ This repository contains necessary files and configs to build Nginx + Gunicorn +
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
-### 🐳 Base Docker Images
----
+## 🐳 Base Docker Images
 
 ```
 +---------------------------------------+
@@ -17,11 +16,10 @@ This repository contains necessary files and configs to build Nginx + Gunicorn +
 +---------------------------------------+
 ```
 
-### ⚠️ Requirements
----
+## ⚠️ Requirements
 
-* **docker** - _[install cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)_
-* **docker-compose** - _[install cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/bb4f986dae4cb2fac8f26c8557517dbd)_
+* **docker** - _[cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)_
+* **docker-compose** - _[cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/bb4f986dae4cb2fac8f26c8557517dbd)_
 * **make** - `sudo apt install make`
 * **a domain name linked to your server**
 
@@ -31,8 +29,7 @@ sudo usermod -aG docker $USER
 ```
 Log out and log back in for changes to apply.  
 
-### ⚙️ Set-up & Installation
----
+## ⚙️ Set-up & Installation
 
 #### 1) Define applications details
 In the `.env` file, enter your application details for the below variables.   
@@ -44,35 +41,47 @@ FLASK_ENV=development
 ```
 *_SSL_EMAIL: Email address for Letsencrypt SSL certificate_   
 *_NGX_DOMAIN: Domain name for Nginx config and Letsencrypt SSL certificate_   
-*_FLASK_SESSION_KEY: Secret Key for Flask Session. It can be whatever you want. ie. 6d8dg8f4-49f493bf9-h30f489h9n_   
+*_FLASK_SESSION_KEY: Secret Key for Flask Session (ex. 6d8dg8f4-49f493bf9-h30f489h9n)_   
 *_FLASK_ENV: Python application environment development / production._   
 
 #### 2) SSL Certificates
 
 We need to install the Letsencrypt client to get the SSL certicates.
 ```sh
-$ make install-le-client
+sudo make install-le-client
 ```
-You might need to enter your sudo password as the command needs to run with admin privileges.   
-It installs the Letsencrypt client and get a certificate for the specified domain name and email address.   
-Wait for the installation and follow the different instructions.   
+It installs the Letsencrypt client and get a certificate 
+for the specified domain name and email address.   
+Wait for the installation and follow the different 
+instructions.   
 
 _Note: Free Letsencrypt cert are only available for 90 days. To renew the cert run_   
 ```sh
-$ make renew-le-cert
+sudo make renew-le-cert
 ```
 
-### ✅ Firing up
----
+## ✅ Firing up
+
 **Start application**
 ```sh
-$ sudo make dc-start
+sudo make dc-start
 ```
  🎉 Your web app should be now accessible at your domain with SSL certificates behind Nginx 🎉   
-![Alt text](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/screenshot.png)
+![screenshot https](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/screenshot.png)
 
 
-**Stop application**
+**Other commands**
 ```sh
-$ sudo make dc-stop
+sudo make dc-reboot   # Reboot application.
+sudo make dc-stop     # Stop application.
+sudo make dc-cleanup  # Delete and clear docker images.
 ```
+
+## License
+
+See [LICENSE](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/LICENSE) file.  
+
+## Contact
+
+Please report issues or questions here:
+https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/issues

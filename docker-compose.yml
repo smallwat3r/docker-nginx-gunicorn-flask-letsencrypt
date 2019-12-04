@@ -1,8 +1,6 @@
-# File              : docker-compose.yml
-# Author            : Matthieu Petiteau <mpetiteau.pro@gmail.com>
-# Date              : Fri  1 Feb 21:02:37 2019
-# Last Modified Date: Thu  7 Feb 16:11:30 2019
-# Last Modified By  : Matthieu Petiteau <mpetiteau.pro@gmail.com>
+# File  : docker-compose.yml
+# Author: Matthieu Petiteau <mpetiteau.pro@gmail.com>
+# Date  : 04.12.2019
 
 version: "3"
 

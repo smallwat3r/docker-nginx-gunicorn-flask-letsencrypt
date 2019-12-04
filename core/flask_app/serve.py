@@ -20,7 +20,7 @@ def root():
 
 @app.route("/robots.txt")
 def static_from_root():
-    """Serve robots."""
+    """Serve robots.txt file."""
     return send_from_directory(app.static_folder, request.path[1:])
 
 
