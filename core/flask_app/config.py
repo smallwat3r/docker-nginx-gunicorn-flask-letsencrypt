@@ -7,13 +7,12 @@ import os
 
 
 class DefaultConfig:
-    """Default."""
+    '''Default.'''
 
     DEBUG = True
-    SESSION_KEY = os.getenv('FLASK_SESSION_KEY')
 
 
 class ProdConfig(DefaultConfig):
-    """Production."""
+    '''Production.'''
 
     DEBUG = False
