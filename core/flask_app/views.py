@@ -13,7 +13,7 @@ from . import app
 @app.route('/')
 def root():
     '''Main.'''
-    msg = ('Congrats, you\'re running Flask, Gunicorn, Nging and LetsEncrypt'
+    msg = ('Congrats, you\'re running Flask, Gunicorn, Nginx and LetsEncrypt'
            ' using Docker containers')
     return render_template('index.html', msg=msg)
 
