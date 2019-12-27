@@ -14,7 +14,7 @@ from . import app
 def root():
     '''Main.'''
     msg = ('Congrats, you\'re running Flask, Gunicorn, Nging and LetsEncrypt'
-           'using Docker containers')
+           ' using Docker containers')
     return render_template('index.html', msg=msg)
 
 
