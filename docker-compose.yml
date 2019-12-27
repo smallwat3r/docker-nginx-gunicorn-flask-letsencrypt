@@ -30,4 +30,3 @@ services:
             - .:/usr/src/app
         environment:
             - FLASK_ENV=${FLASK_ENV}
-            - FLASK_SESSION_KEY=${FLASK_SESSION_KEY}

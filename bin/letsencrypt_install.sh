@@ -4,4 +4,4 @@
 # Date  : 04.12.2019
 
 git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
-/opt/letsencrypt/letsencrypt-auto certonly --standalone --email $1 -d $2
+/opt/letsencrypt/letsencrypt-auto certonly --standalone --email $1 --agree-tos --no-eff-email -d $2
