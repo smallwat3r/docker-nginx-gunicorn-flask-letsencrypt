@@ -3,11 +3,11 @@ include .env
 
 .PHONY: install-le-client
 install-le-client:
-	sudo sh scripts/letsencrypt_install.sh ${SSL_EMAIL} ${NGX_DOMAIN};
+	sudo sh bin/letsencrypt_install.sh ${SSL_EMAIL} ${NGX_DOMAIN};
 
 .PHONY: renew-le-cert
 renew-le-cert:
-	sudo sh scripts/letsencrypt_renew.sh ${SSL_EMAIL} ${NGX_DOMAIN};
+	sudo sh bin/letsencrypt_renew.sh ${SSL_EMAIL} ${NGX_DOMAIN};
 
 .PHONY: dc-start
 dc-start:
