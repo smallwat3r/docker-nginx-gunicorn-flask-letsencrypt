@@ -6,7 +6,6 @@ version: "3"
 
 services:
     nginx:
-        restart: always
         build:
             context: ./nginx
             dockerfile: Dockerfile
@@ -20,8 +19,8 @@ services:
             - /etc/letsencrypt:/etc/letsencrypt
         links:
             - flask_app:flask_app
+
     flask_app:
-        restart: always
         build:
             context: ./core
             dockerfile: Dockerfile

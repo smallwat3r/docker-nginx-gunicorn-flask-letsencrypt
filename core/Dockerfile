@@ -1,10 +1,11 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 RUN apk update && \
     apk add build-base python3 python3-dev libffi-dev libressl-dev && \
-    cd /usr/local/bin && \
-    ln -s /usr/bin/python3 python && \
-    pip3 install --upgrade pip
+    cd /usr/bin && \
+    ln -sf python3 python && \
+    ln -sf pip3 pip && \
+    pip install --upgrade pip
 
 ENV APP_PATH /usr/src/app
 
