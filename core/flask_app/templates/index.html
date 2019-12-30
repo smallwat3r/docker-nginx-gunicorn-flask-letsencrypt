@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>App</title>
-</head>
-
-<body>
-  <div>
-      <p>{{ msg }}</p>
-  </div>
-</body>
-
-</html>
+{% block container %}
+    <p>{{ msg }}</p>
+{% endblock %}

@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-  <title>404</title>
-</head>
-
-<body>
-  <div>
+{% block container %}
     <p>{{ error }}</p>
     <a href="/">Take me home</a>
-  </div>
-</body>
-
-</html>
+{% endblock %}
