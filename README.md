@@ -4,14 +4,14 @@ This repository contains necessary files and configs to build a web-app with Ngi
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
-## 🐳 Docker Images
+## Docker
 
 service | image | version
 --- | --- | ---
 app (core) | alpine | 3.8
 nginx | nginx | latest
 
-## ⚠️ Requirements
+## Requirements
 
 dependency | commands
 --- | ---
@@ -20,7 +20,7 @@ docker-compose | [cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallw
 make | `sudo apt install make`
 a web domain linked to your server | -
 
-## ⚙️ Setting-up
+## Setting things up
 
 #### 1) Add user to `docker` group  
 ```sh
@@ -37,7 +37,7 @@ NGX_DOMAIN=mysuperwebsite.com  # web domain for Nginx config and Letsencrypt
 FLASK_ENV=development          # python application environment development / production
 ```
 
-#### 3) SSL
+#### 3) SSL certificates
 We need to install the Letsencrypt client to get the SSL certicates.
 ```sh
 sudo make install-le-client
@@ -49,13 +49,15 @@ _Note: Free Letsencrypt cert are only available for 90 days. To renew the cert r
 sudo make renew-le-cert
 ```
 
-## ✅ Firing up
+## Turning on
 
 **Start application**
 ```sh
 sudo make dc-start
 ```
- 🎉 Your web-app should now be accessible with HTTPS 🎉   
+<p style="text-align: center;">
+ 🎉 Your web-app should now be running online with HTTPS 🎉   
+</p>
  
 ![screenshot https](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/_screenshot/screenshot.png)
 
