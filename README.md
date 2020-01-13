@@ -58,9 +58,6 @@ sudo make dc-start
 <p style="text-align: center;">
  🎉 Your web-app should now be running online with HTTPS 🎉   
 </p>
- 
-![screenshot https](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/_screenshot/screenshot.png)
-
 
 **Other commands**
 ```sh
