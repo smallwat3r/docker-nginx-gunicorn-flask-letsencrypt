@@ -3,16 +3,18 @@
 # File  : config.py
 # Author: Matthieu Petiteau <mpetiteau.pro@gmail.com>
 # Date  : 04.12.2019
+
+"""Flask application configuration file."""
 import os
 
 
 class DefaultConfig:
-    '''Default.'''
+    """Default."""
 
     DEBUG = True
 
 
 class ProdConfig(DefaultConfig):
-    '''Production.'''
+    """Production."""
 
     DEBUG = False

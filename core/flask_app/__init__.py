@@ -4,7 +4,7 @@
 # Author: Matthieu Petiteau <mpetiteau.pro@gmail.com>
 # Date  : 04.12.2019
 
-'''Init app.'''
+"""Init app."""
 import os
 
 from flask import Flask
@@ -12,9 +12,9 @@ from flask import Flask
 app = Flask(__name__)
 # Load config from class.
 configurations = {
-    'development': 'flask_app.config.DefaultConfig',
-    'production': 'flask_app.config.ProductionConfig',
+    "development": "flask_app.config.DefaultConfig",
+    "production": "flask_app.config.ProductionConfig",
 }
-app.config.from_object(configurations[os.getenv('FLASK_ENV')])
+app.config.from_object(configurations[os.getenv("FLASK_ENV")])
 
 import flask_app.views
