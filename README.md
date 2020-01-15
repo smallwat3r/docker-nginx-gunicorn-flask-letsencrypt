@@ -8,8 +8,8 @@ This repository contains necessary files and configs to build a web-app with Ngi
 
 service | image | version
 --- | --- | ---
-app (core) | alpine | 3.8
-nginx | nginx | latest
+app (core) | alpine | 3.11.0
+nginx | nginx-alpine | 1.17.7
 
 ## Requirements
 
