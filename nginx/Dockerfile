@@ -18,7 +18,7 @@ ARG FLASK
 
 # We use a small hack with envsubst to pass variables to our
 # Nginx config file. The variables in Nginx needs to be in this
-# specific format: ${FOO}. That's we also create a DOLLAR variable
+# specific format: ${FOO}. That's why we create also a DOLLAR variable
 # to add the "real" $ in our config flask_app.conf
 # ex: $host needs to be set as ${DOLLAR}host
 RUN export DOLLAR='$' && \
