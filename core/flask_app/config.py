@@ -5,16 +5,9 @@
 # Date  : 04.12.2019
 
 """Flask application configuration file."""
-import os
 
 
 class DefaultConfig:
     """Default."""
 
     DEBUG = True
-
-
-class ProdConfig(DefaultConfig):
-    """Production."""
-
-    DEBUG = False

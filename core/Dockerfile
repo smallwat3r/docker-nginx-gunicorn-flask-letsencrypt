@@ -1,6 +1,12 @@
 # File     : Dockerfile
 # Date     : 13.01.2020
 # Author   : Matthieu Petiteau <mpetiteau.pro@gmail.com>
+#
+# Dockerfile to run our Flask app with Gunicorn.
+#
+# We create a specific group and a specific non-root
+# user to run our app.
+#
 
 FROM alpine:3.11.0
 
@@ -15,7 +21,7 @@ ENV APP_PATH /usr/src/app
 RUN mkdir -p $APP_PATH
 WORKDIR $APP_PATH/core
 
-# Create a non-root user to run our app container.
+# Create a group app and a non-root user app to run our container.
 RUN addgroup app && \
     adduser --disabled-password --gecos "" --ingroup app --no-create-home app
 
