@@ -22,13 +22,25 @@ a domain or sub-domain | DNS A record needs to points to your server static IP
 
 ## Setting things up
 
-#### 1) Add user to `docker` group  
+#### 1) Clone this repo on your server
+
+I recommend doing this in `/opt`  
+
+```sh
+cd /opt
+sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt.git
+```
+
+Install docker, docker-compose and make (explained just above)  
+
+#### 2) Add user to `docker` group  
+
 ```sh
 sudo usermod -aG docker $USER
 ```
-Log out and log back in for changes to apply.  
+Log out from the server and log back in for changes to apply.  
 
-#### 2) Define applications details
+#### 3) Define applications details
 In the `.env` file, enter your application details.   
 ```sh
 # .env
@@ -43,7 +55,7 @@ DOMAIN=mysuperwebsite.com
 FLASK_ENV=development
 ```
 
-#### 3) SSL certificates
+#### 4) SSL certificates
 We need to install the Letsencrypt client to get the SSL certicates.
 ```sh
 sudo make install-le-client
