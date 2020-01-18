@@ -18,7 +18,7 @@ dependency | commands
 docker | [cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)
 docker-compose | [cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/bb4f986dae4cb2fac8f26c8557517dbd)
 make | `sudo apt install make`
-a web domain linked to your server | -
+a domain or sub-domain | DNS A record needs to points to your server static IP
 
 ## Setting things up
 
