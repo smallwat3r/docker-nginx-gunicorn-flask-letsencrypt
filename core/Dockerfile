@@ -23,11 +23,13 @@ WORKDIR $APP_PATH/core
 RUN addgroup app && \
     adduser --disabled-password --gecos "" --ingroup app --no-create-home app
 
-# Copy our requirement file on our Alpine image and installs.
+# Copy our requirement file to the workdir on our Alpine image and 
+# process to install.
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copy our core/ directory to our Alpine image so we've got the app ready.
+# Copy content from our core/ directory to the workdir on our Alpine
+# image so we've got the app ready to be launched.
 COPY . .
 
 # Switch to our app user.
