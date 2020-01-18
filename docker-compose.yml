@@ -2,32 +2,39 @@
 # Author: Matthieu Petiteau <mpetiteau.pro@gmail.com>
 # Date  : 04.12.2019
 
+# In our nginx service with pass to our build the args
+# DOMAIN and FLASK so we can populate our nginx server
+# config automatically. see nginx/Dockerfile
+
 version: "3.2"
 
 services:
   nginx:
     build:
       context: ./nginx
-      dockerfile: Dockerfile
       args:
-        DOMAIN: ${NGX_DOMAIN}
-        FLASK: ${FLASK_APP_NAME}
+        # Pass the name of our Domain from .env
+        DOMAIN: ${DOMAIN}
+        # Pass the name of our docker-compose service to avoid
+        # having to modify it in Nginx if we want to change it.
+        FLASK: application
     ports:
       - 80:80
       - 443:443
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
     depends_on:
-      - flask_app
+      - application
 
-  flask_app:
-    build:
-      context: ./core
-      dockerfile: Dockerfile
+  application:
+    build: ./core
+    # Run our flask application as a module (flask_app) from core/
+    # it will fetch `app` inside `flask_app/__init__.py`.
+    command: gunicorn -c gunicorn_ini.py flask_app:app
     volumes:
       - .:/usr/src/app
     environment:
+      # Load our flask environment from our .env file.
       - FLASK_ENV=${FLASK_ENV}
     ports:
       - 5000:5000
-

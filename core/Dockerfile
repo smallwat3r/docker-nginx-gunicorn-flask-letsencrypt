@@ -31,5 +31,3 @@ RUN pip install -r requirements.txt
 COPY . .
 
 USER app
-
-CMD [ "gunicorn", "-c", "gunicorn_ini.py", "flask_app:app" ]
