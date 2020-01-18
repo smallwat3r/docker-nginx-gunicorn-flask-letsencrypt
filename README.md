@@ -20,7 +20,7 @@ docker-compose | [commands for Debian / Ubuntu](https://gist.github.com/smallwat
 make | `sudo apt install make`
 a domain or sub-domain | DNS A record needs to points to your server static IP
 
-## Notes if you want to run it with you own Flask app
+### Notes if you want to run it with you own Flask app
 
 #### Flask notes  
 In this example the Flask app is built to run as a module, that's why there is no `app.py` nor `wsgi.py` file. The app configs are set-up inside `__init__.py` directly.  
