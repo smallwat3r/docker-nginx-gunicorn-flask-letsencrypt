@@ -43,7 +43,7 @@ if __name__ == "__main__":
     app.run()
 ```
 
-Then you will need to change the gunicorn command [here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/6c7b933f396b7645c86820f71138baa0b1c4e589/docker-compose.yml#L33) in the docker-compose file, and point it to the new entrypoint `wsgi.py`.  
+Then you will need to change the gunicorn command [here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/6c7b933f396b7645c86820f71138baa0b1c4e589/docker-compose.yml#L33) in the docker-compose file, and point it to the new entrypoint for gunicorn `wsgi.py`.  
 
 This would be: `gunicorn -c gunicorn_ini.py wsgi:app`  
 
