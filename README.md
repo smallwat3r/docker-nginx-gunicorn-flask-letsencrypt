@@ -25,7 +25,7 @@ a domain or sub-domain | DNS A record needs to points to your server static IP
 #### Flask notes  
 In this example the Flask app is built to run as a module, that's why there is no `app.py` nor `wsgi.py` file. The app configs are set-up inside `__init__.py` directly.  
 
-Replace all the files inside `./core/flask_app` (including `__init__.py`) with yours.  
+Replace all the files inside `./core/flask_app/` (including `__init__.py`) with yours.  
 
 If you haven't your app set-up to run as a module as explained above, you will need to create a `wsgi.py` file in `./core/`.  
 
