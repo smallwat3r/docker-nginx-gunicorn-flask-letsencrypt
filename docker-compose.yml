@@ -28,8 +28,8 @@ services:
 
   application:
     build: ./core
-    # Run our flask application as a module (flask_app) from core/
-    # it will fetch `app` inside `flask_app/__init__.py`.
+    # Our Flask app is built to run as a module (`flask_app`). The 
+    # app configs are set-up directly in `flask_app/__init__.py`
     command: gunicorn -c gunicorn_ini.py flask_app:app
     volumes:
       - .:/usr/src/app
