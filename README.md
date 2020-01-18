@@ -1,6 +1,6 @@
 # docker-nginx-gunicorn-flask-letsencrypt
 
-This repository contains necessary files and configs to build a web-app with Nginx / Gunicorn / Flask / Letsencrypt using Docker and docker-compose.   
+This repository contains necessary files to build a web-app running with Nginx / Gunicorn / Flask / Letsencrypt using Docker and docker-compose.   
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
@@ -8,7 +8,7 @@ This repository contains necessary files and configs to build a web-app with Ngi
 
 service | image | version
 --- | --- | ---
-app (core) | alpine | 3.11.0
+flask & gunicorn | alpine | 3.11.0
 nginx | nginx-alpine | 1.17.7
 
 ## Requirements
