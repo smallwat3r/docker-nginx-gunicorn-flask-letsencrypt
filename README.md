@@ -33,7 +33,7 @@ sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsenc
 
 Install docker, docker-compose and make (explained just above).  
 
-<p><details>
+&nbsp;&nbsp;&nbsp;&nbsp;<details>
  
 <summary><b>Important notes if you want to add your own app to this config</b></summary>   
 
@@ -65,7 +65,7 @@ This would be: `gunicorn -c gunicorn_ini.py wsgi:app`
 #### Dockerfile notes  
 Some specific Python dependencies might require specific dependencies on the Alpine image to install. Also as the image is set-up to run with a non-root user, if your app needs access to specific directories, you might need to edit the Dockerfile to allow access to the user `app`.  
 
-</details></p>
+</details>
 
 #### 2) Add user to `docker` group  
 
