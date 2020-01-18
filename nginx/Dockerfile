@@ -7,9 +7,11 @@
 
 FROM nginx:1.17.7-alpine
 
+# Replace the nginx.conf file.
 RUN rm /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/
 
+# Add our flask_app.conf file to our image.
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./conf.d/flask_app.conf /etc/nginx/conf.d/
 
