@@ -47,7 +47,7 @@ Then you will need to change the gunicorn command [here](https://github.com/smal
 
 This would be: `gunicorn -c gunicorn_ini.py wsgi:app`  
 
-You might also want to update the `./core/requirements.txt` files with your Python dependencies.  
+You might also want to update the `./core/requirements.txt` file with your Python dependencies.  
 Also if you tweak `./core/gunicorn_ini.py`, for this config to work, gunicorn needs to bind to port `5000`.  
 
 #### Dockerfile notes  
