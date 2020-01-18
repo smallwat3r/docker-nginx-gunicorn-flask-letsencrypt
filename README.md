@@ -15,8 +15,8 @@ nginx | nginx-alpine | 1.17.7
 
 dependency | commands
 --- | ---
-docker | [cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)
-docker-compose | [cmds for ubuntu 16.04 or 18.04](https://gist.github.com/smallwat3r/bb4f986dae4cb2fac8f26c8557517dbd)
+docker | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)
+docker-compose | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/bb4f986dae4cb2fac8f26c8557517dbd)
 make | `sudo apt install make`
 a domain or sub-domain | DNS A record needs to points to your server static IP
 
@@ -32,9 +32,15 @@ Log out and log back in for changes to apply.
 In the `.env` file, enter your application details.   
 ```sh
 # .env
-EMAIL=myemail@myemail.com  # email to get alerts from Letsencrypt
-DOMAIN=mysuperwebsite.com  # web domain for Nginx config and Letsencrypt
-FLASK_ENV=development      # python application environment
+
+# email to get automatic alerts from Letsencrypt
+EMAIL=myemail@myemail.com
+
+# domain name or subdomain for Nginx config and Letsencrypt
+DOMAIN=mysuperwebsite.com
+
+# flask application environment
+FLASK_ENV=development
 ```
 
 #### 3) SSL certificates
