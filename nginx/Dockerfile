@@ -20,6 +20,6 @@ COPY ./conf.d/flask_app.conf /etc/nginx/conf.d/
 ARG DOMAIN
 ARG FLASK
 RUN export DOLLAR='$' && \
-    export FLASK_APP=$FLASK && \
+    export FLASK=$FLASK && \
     export DOMAIN=$DOMAIN && \
     envsubst < /etc/nginx/conf.d/flask_app.conf > /etc/nginx/conf.d/flask_app.conf

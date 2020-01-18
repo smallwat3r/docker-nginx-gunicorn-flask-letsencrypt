@@ -32,9 +32,9 @@ Log out and log back in for changes to apply.
 In the `.env` file, enter your application details.   
 ```sh
 # .env
-SSL_EMAIL=myemail@myemail.com  # email address for Letsencrypt certificate
-NGX_DOMAIN=mysuperwebsite.com  # web domain for Nginx config and Letsencrypt
-FLASK_ENV=development          # python application environment development / production
+EMAIL=myemail@myemail.com  # email address for Letsencrypt certificate
+DOMAIN=mysuperwebsite.com  # web domain for Nginx config and Letsencrypt
+FLASK_ENV=development      # python application environment development / production
 ```
 
 #### 3) SSL certificates

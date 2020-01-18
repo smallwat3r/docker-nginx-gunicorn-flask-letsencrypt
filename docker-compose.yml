@@ -8,10 +8,9 @@ services:
   nginx:
     build:
       context: ./nginx
-      dockerfile: Dockerfile
       args:
-        DOMAIN: ${NGX_DOMAIN}
-        FLASK: ${FLASK_APP_NAME}
+        DOMAIN: ${DOMAIN}
+        FLASK: flask_app
     ports:
       - 80:80
       - 443:443
@@ -21,13 +20,11 @@ services:
       - flask_app
 
   flask_app:
-    build:
-      context: ./core
-      dockerfile: Dockerfile
+    build: ./core
+    command: gunicorn -c gunicorn_ini.py flask_app:app
     volumes:
       - .:/usr/src/app
     environment:
       - FLASK_ENV=${FLASK_ENV}
     ports:
       - 5000:5000
-
