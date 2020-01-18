@@ -35,12 +35,15 @@ Install docker, docker-compose and make (explained just above).
 
 <details>
  
-<summary>Important notes if you want to add your own app to this config</summary>   
+<summary><b>Important notes if you want to add your own app to this config</b></summary>   
 
 #### Flask notes  
-In this example the Flask app is built to run as a module, that's why there is no `app.py` nor `wsgi.py` file. The app configs are set-up inside `__init__.py` directly. 
+In this example the Flask app is built to run as a module, that's why there is no `app.py` nor `wsgi.py` file. The app configs are set-up inside `__init__.py` directly.  
 
-If you haven't your app set-up to run as a module you will need to create a `wsgi.py` file in `./core/`.  
+Replace all the files inside `./core/flask_app` (including `__init__.py`) with yours.  
+
+If you haven't your app set-up to run as a module as explained above, you will need to create a `wsgi.py` file in `./core/`.  
+
 Example:  
 ```py
 # ./core/wsgi.py
