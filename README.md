@@ -103,7 +103,7 @@ _Note: Free Letsencrypt cert are only available for 90 days. To renew the cert r
 sudo make renew-le-cert
 ```
 
-## Turning on
+## Turning it on
 
 **Start application**
 ```sh
