@@ -33,7 +33,7 @@ Example:
 ```py
 # ./core/wsgi.py
 
-# Import your flask entrypoint from `./core/flask_app/`, this is where your setting up
+# Import your flask entrypoint from `./core/flask_app/`, this is where you're setting up
 # your app variable app = Flask(__name__)
 # The convention is to call this file app.py but it could be something else.
 # For ex if your entrypoing is server.py this would be: from flask_app.server import app
