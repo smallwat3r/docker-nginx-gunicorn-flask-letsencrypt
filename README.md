@@ -34,12 +34,14 @@ sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsenc
 Install docker, docker-compose and make (explained just above).  
 
 <details>
+ 
 <summary>If you want to add your own flask app</summary>   
-  
-  
+
+#### Add your own files under core/flask_app/  
+
 You can wipe out the files under `core/flask_app/` to add your own.  
 
-You might also want to edit the `core/requirements.txt` file with your Python dependencies.  
+You might also want to edit the `core/requirements.txt` file with your Python dependencies and tweak the `core/gunicorn_ini.conf` file.  
 
 **Flask notes**  
 In this example the Flask app is built to run as a module, that's why there is no `app.py` or `wsgi.py` file. The app configs are set-up inside `__init__.py`. If you haven't set-up your app to run as a module you might need to change the gunicorn command [here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/6c7b933f396b7645c86820f71138baa0b1c4e589/docker-compose.yml#L33) in the docker-compose file, and point it to the correct entrypoint.  
