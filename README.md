@@ -47,6 +47,9 @@ Then you will need to change the gunicorn command [here](https://github.com/smal
 
 This would be: `gunicorn -c gunicorn_ini.py wsgi:app`  
 
+You might also want to update the `./core/requirements.txt` files with your Python dependencies.  
+Also if you tweak `./core/gunicorn_ini.py`, for this config to work, gunicorn needs to bind to port `5000`.  
+
 #### Dockerfile notes  
 Some specific Python dependencies might require specific dependencies on the Alpine image to install. Also as the image is set-up to run with a non-root user, if your app needs access to specific directories, you might need to edit the Dockerfile to allow access to the user `app`.  
 
