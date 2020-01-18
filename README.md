@@ -6,10 +6,10 @@ This repository contains necessary files to build a web-app running with Nginx /
 
 ## Docker
 
-service | image | version
---- | --- | ---
-flask & gunicorn | alpine | 3.11.0
-nginx | nginx-alpine | 1.17.7
+service | image
+--- | ---
+flask & gunicorn | alpine:3.11.0
+nginx | nginx:1.17.7-alpine
 
 ## Requirements
 
