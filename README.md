@@ -8,8 +8,8 @@ This repository contains necessary files to build a web-app running with Nginx /
 
 service | image
 --- | ---
-flask & gunicorn | alpine:3.11.0
-nginx | nginx:1.17.7-alpine
+flask & gunicorn | `alpine:3.11.0`
+nginx | `nginx:1.17.7-alpine`
 
 ## Requirements
 
