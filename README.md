@@ -20,22 +20,7 @@ docker-compose | [commands for Debian / Ubuntu](https://gist.github.com/smallwat
 make | `sudo apt install make`
 a domain or sub-domain | DNS A record needs to points to your server static IP
 
-## Setting things up
-
-#### 1) Clone this repo on your server
-
-I recommend doing this in `/opt`  
-
-```sh
-cd /opt
-sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt.git
-```
-
-Install docker, docker-compose and make (explained just above).  
-
-<details>
- 
-<summary>&nbsp;&nbsp;&nbsp;&nbsp;<b>Important notes if you want to add your own app to this config</b></summary>   
+## Notes if you want to replace it with you own Flask app
 
 #### Flask notes  
 In this example the Flask app is built to run as a module, that's why there is no `app.py` nor `wsgi.py` file. The app configs are set-up inside `__init__.py` directly.  
@@ -65,7 +50,21 @@ This would be: `gunicorn -c gunicorn_ini.py wsgi:app`
 #### Dockerfile notes  
 Some specific Python dependencies might require specific dependencies on the Alpine image to install. Also as the image is set-up to run with a non-root user, if your app needs access to specific directories, you might need to edit the Dockerfile to allow access to the user `app`.  
 
-</details>
+
+## Setting things up
+
+#### 1) Clone this repo on your server
+
+I recommend doing this in `/opt`  
+
+```sh
+cd /opt
+sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt.git
+```
+
+Install docker, docker-compose and make (explained [above](#requirements)).  
+
+If you want to run your own Flask app, replace the file in `./core/flask_app/` by your own (explained [above](#notes-if-you-want-to-replace-it-with-you-own-flask-app)).  
 
 #### 2) Add user to `docker` group  
 
