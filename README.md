@@ -41,7 +41,7 @@ Install docker, docker-compose and make (explained just above).
 In this example the Flask app is built to run as a module, that's why there is no `app.py` or `wsgi.py` file. The app configs are set-up inside `__init__.py`. If you haven't set-up your app to run as a module you might need to change the gunicorn command [here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/6c7b933f396b7645c86820f71138baa0b1c4e589/docker-compose.yml#L33) in the docker-compose file, and point it to the correct entrypoint.  
 
 #### Dockerfile notes  
-Some specific Python dependencies might require specific dependencies on the Alpine image to install. Also as the image is set-up to run with a non-root user, if you're app needs access to specific directories, you might need to edit the Dockerfile to allow access to the user `app`.  
+Some specific Python dependencies might require specific dependencies on the Alpine image to install. Also as the image is set-up to run with a non-root user, if your app needs access to specific directories, you might need to edit the Dockerfile to allow access to the user `app`.  
 
 </details>
 
