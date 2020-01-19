@@ -67,7 +67,7 @@ sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsenc
 
 Install docker, docker-compose and make (explained [above](#requirements)).  
 
-If you want to run your own Flask app, replace the file in `./core/flask_app/` by your own (explained [above](#notes-if-you-want-to-run-it-with-you-own-flask-app)).  
+If you want to run your own Flask app, replace the files in `./core/flask_app/` by your own (explained [above](#notes-if-you-want-to-run-it-with-you-own-flask-app)).  
 
 #### 2) Add user to `docker` group  
 
