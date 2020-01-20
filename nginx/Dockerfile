@@ -20,8 +20,12 @@ COPY ./conf.d/flask_app.conf /etc/nginx/conf.d/
 # we create also a DOLLAR variable to add the "real" $ in our config flask_app.conf
 # ex: $host needs to be set as ${DOLLAR}host
 ARG DOMAIN
+ENV DOMAIN=$DOMAIN
+
 ARG FLASK
-RUN export DOLLAR='$' && \
-    export FLASK=$FLASK && \
-    export DOMAIN=$DOMAIN && \
-    envsubst < /etc/nginx/conf.d/flask_app.conf > /etc/nginx/conf.d/flask_app.conf
+ENV FLASK=$FLASK
+
+ENV DOLLAR='$'
+# Substitue contents and write a new application.conf file, which is imported by nginx.conf
+RUN envsubst < /etc/nginx/conf.d/flask_app.conf > /etc/nginx/conf.d/application.conf && \
+    rm /etc/nginx/conf.d/flask_app.conf
