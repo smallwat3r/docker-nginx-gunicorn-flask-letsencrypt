@@ -7,6 +7,9 @@
 
 FROM nginx:1.17.7-alpine
 
+# Install certbot for letsencrypt certificates.
+RUN apk add --no-cache certbot
+
 # Replace the nginx.conf file.
 RUN rm /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/
@@ -25,7 +28,25 @@ ENV DOMAIN=$DOMAIN
 ARG FLASK
 ENV FLASK=$FLASK
 
+ARG EMAIL
+ENV EMAIL=$EMAIL
+
 ENV DOLLAR='$'
+
 # Substitute contents and write a new application.conf file, which is imported by nginx.conf
 RUN envsubst < /etc/nginx/conf.d/flask_app.conf > /etc/nginx/conf.d/application.conf && \
     rm /etc/nginx/conf.d/flask_app.conf
+
+# Directory needed for certificates renewal
+RUN mkdir /var/lib/certbot
+
+# App entrypoint
+COPY ./bin/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Auto renewals
+COPY ./bin/renew /etc/periodic/weekly/renew
+RUN chmod +x /etc/periodic/weekly/renew
+
+# Install certificates
+ENTRYPOINT ../entrypoint.sh $DOMAIN $EMAIL

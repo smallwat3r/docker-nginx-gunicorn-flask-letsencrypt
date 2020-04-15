@@ -1,6 +1,6 @@
 # docker-nginx-gunicorn-flask-letsencrypt
 
-This repository contains necessary files to build a web-app running with Nginx / Gunicorn / Flask / Letsencrypt using Docker and docker-compose.   
+This repository contains necessary files to build a web-app running with Nginx / Gunicorn / Flask / Letsencrypt using Docker and docker-compose.  
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
@@ -91,18 +91,6 @@ DOMAIN=mysuperwebsite.com
 FLASK_ENV=development
 ```
 
-#### 4) SSL certificates
-We need to install the Letsencrypt client to get the SSL certicates.
-```sh
-sudo make install-le-client
-```
-It installs the Letsencrypt client and get a certificate for the specified web domain.  
-
-_Note: Free Letsencrypt cert are only available for 90 days. To renew the cert run_   
-```sh
-sudo make renew-le-cert
-```
-
 ## Turning it on
 
 **Start application**
@@ -119,6 +107,8 @@ sudo make dc-reboot   # Reboot application.
 sudo make dc-stop     # Stop application.
 sudo make dc-cleanup  # Delete and clear docker images.
 ```
+
+Auto checks are running weekly to update the certificates.  
 
 ## License
 
