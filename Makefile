@@ -1,14 +1,6 @@
 include .env
 
 
-.PHONY: install-le-client
-install-le-client:
-	sudo sh bin/letsencrypt_install.sh ${EMAIL} ${DOMAIN};
-
-.PHONY: renew-le-cert
-renew-le-cert:
-	sudo sh bin/letsencrypt_renew.sh ${EMAIL} ${DOMAIN};
-
 .PHONY: dc-start
 dc-start:
 	@docker-compose stop;

@@ -13,8 +13,9 @@ services:
     build:
       context: ./nginx
       args:
-        # Pass the name of our Domain from .env
+        # Pass the name of our Domain and Email from .env
         DOMAIN: ${DOMAIN}
+        EMAIL: ${EMAIL}
         # Pass the name of our docker-compose service to avoid
         # having to modify it in Nginx if we want to change it.
         FLASK: application
@@ -28,7 +29,7 @@ services:
 
   application:
     build: ./core
-    # Our Flask app is built to run as a module (`flask_app`). The 
+    # Our Flask app is built to run as a module (`flask_app`). The
     # app configs are set-up directly in `flask_app/__init__.py`
     command: gunicorn -c gunicorn_ini.py flask_app:app
     volumes:

@@ -91,18 +91,6 @@ DOMAIN=mysuperwebsite.com
 FLASK_ENV=development
 ```
 
-#### 4) SSL certificates
-We need to install the Letsencrypt client to get the SSL certicates.
-```sh
-sudo make install-le-client
-```
-It installs the Letsencrypt client and get a certificate for the specified web domain.  
-
-_Note: Free Letsencrypt cert are only available for 90 days. To renew the cert run_   
-```sh
-sudo make renew-le-cert
-```
-
 ## Turning it on
 
 **Start application**

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+python3 -c 'import random; import time; time.sleep(random.random() * 3600)' && \
+  certbot renew --webroot --webroot-path /var/lib/certbot/ --post-hook "/usr/sbin/nginx -s reload"
