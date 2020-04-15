@@ -28,7 +28,11 @@ ENV DOMAIN=$DOMAIN
 ARG FLASK
 ENV FLASK=$FLASK
 
+ARG EMAIL
+ENV EMAIL=$EMAIL
+
 ENV DOLLAR='$'
+
 # Substitute contents and write a new application.conf file, which is imported by nginx.conf
 RUN envsubst < /etc/nginx/conf.d/flask_app.conf > /etc/nginx/conf.d/application.conf && \
     rm /etc/nginx/conf.d/flask_app.conf
@@ -45,5 +49,4 @@ COPY ./bin/renew /etc/periodic/weekly/renew
 RUN chmod +x /etc/periodic/weekly/renew
 
 # Install certificates
-ARG EMAIL
 ENTRYPOINT ../entrypoint.sh $DOMAIN $EMAIL
