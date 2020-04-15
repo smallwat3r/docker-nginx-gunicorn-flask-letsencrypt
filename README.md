@@ -1,6 +1,6 @@
 # docker-nginx-gunicorn-flask-letsencrypt
 
-This repository contains necessary files to build a web-app running with Nginx / Gunicorn / Flask / Letsencrypt using Docker and docker-compose.  
+This repository contains necessary files to build a web-app running with Nginx / Gunicorn / Flask / LetsEncrypt using Docker and docker-compose.  
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
