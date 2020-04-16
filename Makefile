@@ -1,4 +1,4 @@
-include vars.env
+include .env
 
 
 .PHONY: dc-start

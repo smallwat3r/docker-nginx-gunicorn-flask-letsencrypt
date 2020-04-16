@@ -77,9 +77,9 @@ sudo usermod -aG docker $USER
 Log out from the server and log back in for changes to apply.  
 
 #### 3) Define applications details
-Copy `vars.env.example` to `vars.env` and enter your application details.   
+Copy `.env.example` to `.env` and enter your application details.   
 ```sh
-# vars.env.example
+# .env.example
 
 # email to get automatic alerts from Letsencrypt
 EMAIL=myemail@myemail.com
