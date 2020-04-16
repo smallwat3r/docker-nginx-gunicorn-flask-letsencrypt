@@ -14,18 +14,20 @@ services:
       context: ./nginx
       args:
         # Pass the name of our Domain and Email from .env
-        DOMAIN: ${DOMAIN}
-        EMAIL: ${EMAIL}
+        #DOMAIN: ${DOMAIN}
+        #EMAIL: ${EMAIL}
         # Pass the name of our docker-compose service to avoid
         # having to modify it in Nginx if we want to change it.
         FLASK: application
     ports:
       - 80:80
       - 443:443
-    volumes:
-        - ${NGINX_VOLUMES}
+    #volumes:
+    #    - ${NGINX_VOLUMES}
     depends_on:
       - application
+    env_file:
+      - vars.env
 
   application:
     build: ./core
@@ -34,8 +36,11 @@ services:
     command: gunicorn -c gunicorn_ini.py flask_app:app
     volumes:
       - .:/usr/src/app
-    environment:
+    #environment:
       # Load our flask environment from our .env file.
-      - FLASK_ENV=${FLASK_ENV}
+      #- FLASK_ENV=${FLASK_ENV}
+    env_file:
+      - vars.env
     ports:
       - 5000:5000
+
