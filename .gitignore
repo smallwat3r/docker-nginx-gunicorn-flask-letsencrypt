@@ -5,3 +5,4 @@ core/venv
 *.swp
 *.log
 .venv
+vars.env

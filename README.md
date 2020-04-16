@@ -77,9 +77,9 @@ sudo usermod -aG docker $USER
 Log out from the server and log back in for changes to apply.  
 
 #### 3) Define applications details
-In the `.env` file, enter your application details.   
+Copy `vars.env.example` to `vars.env` and enter your application details.   
 ```sh
-# .env
+# vars.env.example
 
 # email to get automatic alerts from Letsencrypt
 EMAIL=myemail@myemail.com
@@ -89,6 +89,11 @@ DOMAIN=mysuperwebsite.com
 
 # flask application environment
 FLASK_ENV=development
+
+# Use different volumes for letsencrypt when running locally or remotely
+NGINX_VOLUMES=/etc/letsencrypt:/etc/letsencrypt
+# For running locally on macos
+#NGINX_VOLUMES=/private/etc/letsencrypt:/etc/letsencrypt
 ```
 
 ## Turning it on
