@@ -23,7 +23,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-        - ${NGINX_VOLUMES}
+        - /etc/letsencrypt:/etc/letsencrypt
     depends_on:
       - application
 

@@ -89,11 +89,6 @@ DOMAIN=mysuperwebsite.com
 
 # flask application environment
 FLASK_ENV=development
-
-# Use different volumes for letsencrypt when running locally or remotely
-NGINX_VOLUMES=/etc/letsencrypt:/etc/letsencrypt
-# For running locally on macos
-#NGINX_VOLUMES=/private/etc/letsencrypt:/etc/letsencrypt
 ```
 
 ## Turning it on
@@ -108,9 +103,10 @@ sudo make dc-start
 
 **Other commands**
 ```sh
-sudo make dc-reboot   # Reboot application.
-sudo make dc-stop     # Stop application.
-sudo make dc-cleanup  # Delete and clear docker images.
+sudo make dc-reboot      # Reboot application.
+sudo make dc-stop        # Stop application.
+sudo make dc-cleanup     # Delete and clear docker images.
+sudo make dc-start-local # Start application w/o nginx (for running locally)
 ```
 
 Auto checks are running weekly to update the certificates.  
