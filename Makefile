@@ -22,3 +22,9 @@ dc-reboot:
 	printf 'y' | sudo docker system prune;
 	@docker-compose build;
 	@docker-compose up -d;
+
+.PHONY: dc-start-local
+dc-start-local:
+	@docker-compose stop;
+	@docker-compose build;
+	@docker-compose up --scale nginx=0;

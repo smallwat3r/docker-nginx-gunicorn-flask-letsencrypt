@@ -77,9 +77,9 @@ sudo usermod -aG docker $USER
 Log out from the server and log back in for changes to apply.  
 
 #### 3) Define applications details
-In the `.env` file, enter your application details.   
+Copy `.env.example` to `.env` and enter your application details.   
 ```sh
-# .env
+# .env.example
 
 # email to get automatic alerts from Letsencrypt
 EMAIL=myemail@myemail.com
@@ -103,9 +103,10 @@ sudo make dc-start
 
 **Other commands**
 ```sh
-sudo make dc-reboot   # Reboot application.
-sudo make dc-stop     # Stop application.
-sudo make dc-cleanup  # Delete and clear docker images.
+sudo make dc-reboot      # Reboot application.
+sudo make dc-stop        # Stop application.
+sudo make dc-cleanup     # Delete and clear docker images.
+sudo make dc-start-local # Start application w/o nginx (for running locally)
 ```
 
 Auto checks are running weekly to update the certificates.  
