@@ -23,7 +23,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-        - /etc/letsencrypt:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
     depends_on:
       - application
 
@@ -39,4 +39,3 @@ services:
       - FLASK_ENV=${FLASK_ENV}
     ports:
       - 5000:5000
-    
