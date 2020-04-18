@@ -45,21 +45,20 @@ Copy `.env.example` to `.env` and enter your application details.
 ```sh
 # .env.example
 
-# email to get automatic alerts from Letsencrypt
-EMAIL=myemail@myemail.com
+# Email to get alerts from Letsencrypt.
+EMAIL=email@email.com
 
-# domain name or subdomain for Nginx config and Letsencrypt
-DOMAIN=mysuperwebsite.com
+# Domain name or subdomain linked to your server's public IP.
+DOMAIN=mydomain.com
 
-# Folder where is located the app in the repo. In this example
+# Folder where is located your flask app in the repo. In this example
 # it's under ./core/
 APP_FOLDER=core
 
-# flask application environment
+# Application environment.
 FLASK_ENV=development
 
-# Application name under ./core/<name>/
-# If can be the app entrypoint (wsgi if using ./core/wsgi.py)
+# If can be the app's entrypoint (wsgi if using ./core/wsgi.py)
 # or the application package (as in this case) as the app's
 # configs are under ./core/flask_app/__init__.py
 FLASK_APP=flask_app
