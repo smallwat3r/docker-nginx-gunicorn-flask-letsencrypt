@@ -51,6 +51,10 @@ EMAIL=myemail@myemail.com
 # domain name or subdomain for Nginx config and Letsencrypt
 DOMAIN=mysuperwebsite.com
 
+# Folder where is located the app in the repo. In this example
+# it's under ./core/
+APP_FOLDER=core
+
 # flask application environment
 FLASK_ENV=development
 

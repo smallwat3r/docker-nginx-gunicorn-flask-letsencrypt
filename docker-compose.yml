@@ -28,7 +28,8 @@ services:
       - application
 
   application:
-    build: ./core
+    # Load app folder fron our .env file (in this example: core).
+    build: ./${APP_FOLDER}
     # Load flask app from our .env file.
     # If can be the app entrypoint (wsgi if using ./core/wsgi.py)
     # or the application package (as in this case) as the app's
