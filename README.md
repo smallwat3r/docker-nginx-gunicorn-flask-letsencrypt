@@ -33,8 +33,6 @@ sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsenc
 
 Install docker, docker-compose and make (explained [above](#requirements)).  
 
-If you want to run your own Flask app, replace the files in `./core/flask_app/` by your own (explained [above](#notes-if-you-want-to-run-it-with-you-own-flask-app)).  
-
 #### 2) Add user to `docker` group  
 
 ```sh
@@ -55,6 +53,12 @@ DOMAIN=mysuperwebsite.com
 
 # flask application environment
 FLASK_ENV=development
+
+# Application name under ./core/<name>/
+# If can be the app entrypoint (wsgi if using ./core/wsgi.py)
+# or the application package (as in this case) as the app's
+# configs are under ./core/flask_app/__init__.py
+FLASK_APP=flask_app
 ```
 
 ## Turning it on
