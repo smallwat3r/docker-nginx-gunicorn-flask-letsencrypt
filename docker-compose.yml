@@ -29,9 +29,11 @@ services:
 
   application:
     build: ./core
-    # Our Flask app is built to run as a module (`flask_app`). The
-    # app configs are set-up directly in `flask_app/__init__.py`
-    command: gunicorn -c gunicorn_ini.py flask_app:app
+    # Load flask app from our .env file.
+    # If can be the app entrypoint (wsgi if using ./core/wsgi.py)
+    # or the application package (as in this case) as the app's
+    # configs are under ./core/flask_app/__init__.py
+    command: gunicorn -c gunicorn_ini.py ${FLASK_APP}:app
     volumes:
       - .:/usr/src/app
     environment:
