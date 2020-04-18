@@ -1,3 +1,0 @@
-[submodule "shopify-webhook-receiver"]
-	path = shopify-webhook-receiver
-	url = https://github.com/smallwat3r/shopify-webhook-receiver
