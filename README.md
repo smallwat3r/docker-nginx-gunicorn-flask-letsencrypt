@@ -20,40 +20,6 @@ docker-compose | [commands for Debian / Ubuntu](https://gist.github.com/smallwat
 make | `sudo apt install make`
 a domain or sub-domain | DNS A record needs to points to your server static IP
 
-### Notes if you want to run it with you own Flask app
-
-#### Flask notes  
-In this example the Flask app is built to run as a module, that's why there is no `app.py` nor `wsgi.py` file. The app configs are set-up inside `__init__.py` directly.  
-
-Replace all the files inside `./core/flask_app/` (including `__init__.py`) with yours.  
-
-If you haven't your app set-up to run as a module as explained above, you will need to create a `wsgi.py` file in `./core/`.  
-
-Example:  
-```py
-# ./core/wsgi.py
-
-# Import your flask entrypoint from `./core/flask_app/`, this is where you're setting up
-# your app variable: app = Flask(__name__) and configs for app.
-# The convention is to call this file app.py but it could be something else.
-# For ex if your entrypoing is server.py this would be: from flask_app.server import app
-from flask_app.app import app
-
-if __name__ == "__main__":
-    app.run()
-```
-
-Then you will need to change the gunicorn command [here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/6c7b933f396b7645c86820f71138baa0b1c4e589/docker-compose.yml#L33) in the docker-compose file, and point it to the new entrypoint for gunicorn `wsgi.py`.  
-
-This would be: `gunicorn -c gunicorn_ini.py wsgi:app`  
-
-You might also want to update the `./core/requirements.txt` file with your Python packages.  
-Also if you tweak `./core/gunicorn_ini.py`, for this config to work, gunicorn needs to bind to port `5000`.  
-
-#### Dockerfile (./core) notes  
-Some specific Python packages might require specific dependencies on the Alpine image to install. Also as the image is set-up to run with a non-root user, if your app needs access to specific directories, you might need to edit the Dockerfile to allow access to the user `app`.  
-
-
 ## Setting things up
 
 #### 1) Clone this repo on your server
