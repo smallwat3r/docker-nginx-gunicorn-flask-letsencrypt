@@ -1,35 +1,35 @@
-# File     : Dockerfile
-# Date     : 13.01.2020
 # Author   : Matthieu Petiteau <mpetiteau.pro@gmail.com>
-#
 # Dockerfile to run our Flask app with Gunicorn.
-#
+FROM python:3.8.2-alpine3.11
 
-FROM alpine:3.11.0
+# Install needed dependencies for our app to run.
+RUN apk update \
+  && apk add --no-cache \
+    gcc \
+    libffi-dev \
+    musl-dev
 
-# Install needed dependencies for Python 3.
-RUN apk update && \
-    apk add build-base python3 python3-dev libffi-dev libressl-dev && \
-    ln -sf /usr/bin/python3 /usr/bin/python && \
-    ln -sf /usr/bin/pip3 usr/bin/pip && \
-    pip install --upgrade pip
+# Create a group app and a non-root user app to run our app.
+RUN addgroup -g 12001 app \
+  && adduser -u 12001 --disabled-password --gecos "" --ingroup app app
 
-# Create a group app and a non-root user app to run our container.
-RUN addgroup app && \
-    adduser --disabled-password --gecos "" --ingroup app app
-
-# Switch to our app user. Add user bin to $PATH.
+# Switch to the non-root user.
 USER app
+
+# App location in our container.
+WORKDIR /opt/app
+
+# Add ~/.local/bin to user path.
 ENV PATH="/home/app/.local/bin:${PATH}"
 
-# Work from
-WORKDIR app/
-
-# Copy our requirements to the workdir on our Alpine image and
-# process to install.
+# Copy requirements file to our container, install, and remove
+# files to we don't need.
 COPY requirements.txt .
-RUN pip install --user -r requirements.txt
+RUN pip install --no-cache-dir --user -r requirements.txt \
+  && find /home/app/.local \
+     \( -type d -a -name test -o -name tests \) \
+     -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
+     -exec rm -rf '{}' +
 
-# Copy content from our core/ directory to the workdir on our Alpine
-# image so we've got the app ready to be launched.
+# Copy our app to our container, and run gunicorn.
 COPY . .

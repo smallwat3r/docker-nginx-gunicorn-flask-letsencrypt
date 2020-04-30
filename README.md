@@ -1,6 +1,8 @@
 # docker-nginx-gunicorn-flask-letsencrypt
 
-This repository contains necessary files to build a web-app running with Nginx / Gunicorn / Flask / LetsEncrypt using Docker and docker-compose.  
+This repository contains necessary files to build a web-app running
+with Nginx / Gunicorn / Flask / LetsEncrypt using Docker and 
+docker-compose.  
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
@@ -8,7 +10,7 @@ This repository contains necessary files to build a web-app running with Nginx /
 
 service | image
 --- | ---
-flask & gunicorn | `alpine:3.11.0`
+flask & gunicorn | `python:3.8.2-alpine3.11`
 nginx | `nginx:1.17.7-alpine`
 
 ## Requirements
@@ -31,7 +33,8 @@ cd /opt
 sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt.git
 ```
 
-Install docker, docker-compose and make (explained [above](#requirements)).  
+Install docker, docker-compose and make (explained 
+[above](#requirements)).  
 
 #### 2) Add user to `docker` group  
 
@@ -41,7 +44,7 @@ sudo usermod -aG docker $USER
 Log out from the server and log back in for changes to apply.  
 
 #### 3) Define applications details
-Copy `.env.example` to `.env` and enter your application details.   
+Copy `.env.example` to `.env` and enter your application details.  
 ```sh
 # .env.example
 
@@ -60,8 +63,8 @@ FLASK_ENV=development
 
 # If can be the app's entrypoint (wsgi if using ./core/wsgi.py)
 # or the application package (as in this case) as the app's
-# configs are under ./core/flask_app/__init__.py
-FLASK_APP=flask_app
+# configs are under ./core/example_app/__init__.py
+FLASK_APP=example_app
 ```
 
 ## Turning it on
@@ -76,9 +79,7 @@ sudo make dc-start
 
 **Other commands**
 ```sh
-sudo make dc-reboot      # Reboot application.
 sudo make dc-stop        # Stop application.
-sudo make dc-cleanup     # Delete and clear docker images.
 sudo make dc-start-local # Start application w/o nginx (for running locally)
 ```
 
@@ -90,4 +91,5 @@ See [LICENSE](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencr
 
 ## Contact
 
-Please report issues or questions [here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/issues).
+Please report issues or questions 
+[here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/issues).

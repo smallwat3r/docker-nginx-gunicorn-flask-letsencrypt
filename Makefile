@@ -11,18 +11,6 @@ dc-start:
 dc-stop:
 	@docker-compose stop;
 
-.PHONY: dc-cleanup
-dc-cleanup:
-	@docker rm $(shell docker ps -qa --no-trunc --filter "status=exited");
-	@docker rmi $(shell docker images --filter "dangling=true" -q --no-trunc);
-
-.PHONY: dc-reboot
-dc-reboot:
-	@docker-compose stop;
-	printf 'y' | sudo docker system prune;
-	@docker-compose build;
-	@docker-compose up -d;
-
 .PHONY: dc-start-local
 dc-start-local:
 	@docker-compose stop;
