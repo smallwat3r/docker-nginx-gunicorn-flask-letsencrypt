@@ -1,11 +1,7 @@
-# File  : docker-compose.yml
 # Author: Matthieu Petiteau <mpetiteau.pro@gmail.com>
-# Date  : 04.12.2019
-
 # In our nginx service with pass to our build the args
 # DOMAIN and FLASK so we can populate our nginx server
 # config automatically. see nginx/Dockerfile
-
 version: "3.2"
 
 services:
@@ -28,15 +24,9 @@ services:
       - application
 
   application:
-    # Load app folder fron our .env file (in this example: core).
+    # Load app folder fron our .env file (in this example: src).
     build: ./${APP_FOLDER}
-    # Load flask app from our .env file.
-    # If can be the app entrypoint (wsgi if using ./core/wsgi.py)
-    # or the application package (as in this case) as the app's
-    # configs are under ./core/flask_app/__init__.py
-    command: gunicorn -c gunicorn_ini.py ${FLASK_APP}:app
-    volumes:
-      - .:/usr/src/app
+    command: gunicorn -c gunicorn.ini.py ${FLASK_APP}:app
     environment:
       # Load our flask environment from our .env file.
       - FLASK_ENV=${FLASK_ENV}
