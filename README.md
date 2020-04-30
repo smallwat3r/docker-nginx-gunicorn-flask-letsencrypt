@@ -55,15 +55,15 @@ EMAIL=email@email.com
 DOMAIN=mydomain.com
 
 # Folder where is located your flask app in the repo. In this example
-# it's under ./core/
-APP_FOLDER=core
+# it's under ./src/
+APP_FOLDER=src
 
 # Application environment.
 FLASK_ENV=development
 
-# If can be the app's entrypoint (wsgi if using ./core/wsgi.py)
+# If can be the app's entrypoint (wsgi if using ./src/wsgi.py)
 # or the application package (as in this case) as the app's
-# configs are under ./core/example_app/__init__.py
+# configs are under ./src/example_app/__init__.py
 FLASK_APP=example_app
 ```
 

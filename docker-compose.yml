@@ -24,7 +24,7 @@ services:
       - application
 
   application:
-    # Load app folder fron our .env file (in this example: core).
+    # Load app folder fron our .env file (in this example: src).
     build: ./${APP_FOLDER}
     command: gunicorn -c gunicorn.ini.py ${FLASK_APP}:app
     volumes:
