@@ -27,8 +27,6 @@ services:
     # Load app folder fron our .env file (in this example: src).
     build: ./${APP_FOLDER}
     command: gunicorn -c gunicorn.ini.py ${FLASK_APP}:app
-    volumes:
-      - .:/opt/app
     environment:
       # Load our flask environment from our .env file.
       - FLASK_ENV=${FLASK_ENV}
