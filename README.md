@@ -1,4 +1,7 @@
-# docker-nginx-gunicorn-flask-letsencrypt
+<h3 align="center">docker-nginx-gunicorn-flask-letsencrypt</h3>
+<p align="center">Boilerplate code for setting up Nginx + Gunicorn + Flask + LetsEncrypt certificates using docker-compose.</p>
+
+---
 
 This repository contains necessary files to build a web-app running
 with Nginx / Gunicorn / Flask / LetsEncrypt using Docker and 

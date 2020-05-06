@@ -1,6 +1,6 @@
 # Author   : Matthieu Petiteau <mpetiteau.pro@gmail.com>
-# Dockerfile to run our Flask app with Gunicorn.
-FROM python:3.8.2-alpine3.11
+# Flask app Dockerfile
+FROM python:3.8.3-alpine3.11
 
 # Install needed dependencies for our app to run.
 RUN apk update \
@@ -9,27 +9,38 @@ RUN apk update \
     libffi-dev \
     musl-dev
 
-# Create a group app and a non-root user app to run our app.
-RUN addgroup -g 12001 app \
-  && adduser -u 12001 --disabled-password --gecos "" --ingroup app app
-
-# Switch to the non-root user.
-USER app
-
-# App location in our container.
 WORKDIR /opt/app
 
-# Add ~/.local/bin to user path.
-ENV PATH="/home/app/.local/bin:${PATH}"
+# App non-root user
+ENV GROUP=app
+ENV USER=flask
+ENV UID=12345
+ENV GID=23456
+RUN addgroup --gid "$GID" "$GROUP" \
+  && adduser --uid "$UID" \
+    --disabled-password \
+    --gecos "" \
+    --ingroup "$GROUP" \
+    "$USER"
+
+# Switch to the non-root user
+USER "$USER"
+ENV PATH="/home/$USER/.local/bin:${PATH}"
 
 # Copy requirements file to our container, install, and remove
-# files to we don't need.
+# files to we don't need to reduce the container size
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt \
-  && find /home/app/.local \
-     \( -type d -a -name test -o -name tests \) \
-     -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
-     -exec rm -rf '{}' +
+RUN pip install \
+    --no-cache-dir \
+    --no-warn-script-location \
+    --user \
+    -r requirements.txt \
+  && find "/home/$USER/.local" \
+    \( -type d -a -name test -o -name tests \) \
+    -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
+    -exec rm -rf '{}' +
 
-# Copy our app to our container, and run gunicorn.
-COPY . .
+# Copy app to container (with privileges to non-root user)
+COPY --chown=$USER:$GROUP . .
+
+# Gunicorn is run from the docker-compose file
