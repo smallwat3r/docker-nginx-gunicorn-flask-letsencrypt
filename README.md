@@ -20,8 +20,8 @@ nginx | `nginx:1.17.7-alpine`
 
 dependency | commands
 --- | ---
-docker | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/45f50f067f248aa3c89eec832277f072)
-docker-compose | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/bb4f986dae4cb2fac8f26c8557517dbd)
+docker | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/a1664013e6ca8fb9ee02dd4b886a4996)
+docker-compose | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/05f4b4a7a8361901d23bfdd492e40870)
 make | `sudo apt install make`
 a domain or sub-domain | DNS A record needs to points to your server static IP
 
