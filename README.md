@@ -4,8 +4,8 @@
 ---
 
 This repository contains necessary files to build a web-app running
-with Nginx / Gunicorn / Flask / LetsEncrypt using Docker and 
-docker-compose.  
+with Nginx / Gunicorn / Flask / LetsEncrypt (Certbot) using Docker 
+and docker-compose.  
 
 **Note: Tested on Ubuntu 16.04 and 18.04**
 
@@ -29,14 +29,14 @@ a domain or sub-domain | DNS A record needs to points to your server static IP
 
 #### 1) Clone this repo on your server
 
-I recommend doing this in `/opt`  
+I recommend doing so under `/opt`  
 
 ```sh
 cd /opt
 sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt.git
 ```
 
-Install docker, docker-compose and make (explained 
+Install docker, docker-compose and make (commands can be found
 [above](#requirements)).  
 
 #### 2) Add user to `docker` group  
@@ -46,25 +46,26 @@ sudo usermod -aG docker $USER
 ```
 Log out from the server and log back in for changes to apply.  
 
-#### 3) Define applications details
-Copy `.env.example` to `.env` and enter your application details.  
-```sh
-# .env.example
+#### 3) Define your application details
 
-# Email to get alerts from Letsencrypt.
+Copy `.env.example` to `.env` and set up the environment variables.
+```sh
+# .env
+
+# Email to get alerts from LetsEncrypt.
 EMAIL=email@email.com
 
 # Domain name or subdomain linked to your server's public IP.
 DOMAIN=mydomain.com
 
-# Folder where is located your flask app in the repo. In this example
+# Folder where your flask app is located in the repo. In this example
 # it's under ./src/
 APP_FOLDER=src
 
-# Application environment.
+# Application environment name
 FLASK_ENV=development
 
-# If can be the app's entrypoint (wsgi if using ./src/wsgi.py)
+# It can be the application entrypoint (wsgi if using ./src/wsgi.py)
 # or the application package (as in this case) as the app's
 # configs are under ./src/example_app/__init__.py
 FLASK_APP=example_app
