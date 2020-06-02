@@ -1,17 +1,24 @@
 include .env
 
+.PHONY: help dc-start dc-stop dc-start-local
+.DEFAULT: help
 
-.PHONY: dc-start
+help:
+	@echo "make dc-start"
+	@echo "  Start app in docker."
+	@echo "make dc-stop"
+	@echo "  Stop docker app."
+	@echo "make dc-start-local"
+	@echo "  Start docker app for local dev (w/o nginx)."
+
 dc-start:
 	@docker-compose stop;
 	@docker-compose build;
 	@docker-compose up -d;
 
-.PHONY: dc-stop
 dc-stop:
 	@docker-compose stop;
 
-.PHONY: dc-start-local
 dc-start-local:
 	@docker-compose stop;
 	@docker-compose build;
