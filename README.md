@@ -29,10 +29,7 @@ a domain or sub-domain | DNS A record needs to points to your server static IP
 
 #### 1) Clone this repo on your server
 
-I recommend doing so under `/opt`  
-
 ```sh
-cd /opt
 sudo git clone https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt.git
 ```
 
