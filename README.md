@@ -84,6 +84,8 @@ sudo make dc-start
 ```sh
 sudo make dc-stop        # Stop application.
 sudo make dc-start-local # Start application w/o nginx (for running locally)
+
+make help                # List all the commands available from Makefile.
 ```
 
 Auto checks are running weekly to update the certificates.  

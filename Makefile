@@ -4,6 +4,9 @@ include .env
 .DEFAULT: help
 
 help:
+	@echo "List of available commands"
+	@echo "(Note that you might need to run these commands with 'sudo')"
+	@echo ""
 	@echo "make dc-start"
 	@echo "  Start app in docker."
 	@echo "make dc-stop"
