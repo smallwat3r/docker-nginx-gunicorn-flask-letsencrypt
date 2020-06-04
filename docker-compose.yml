@@ -24,9 +24,9 @@ services:
       - application
 
   application:
-    # APP_FOLDER = folder containing the app, loaded from .env file (`src` in this example)
+    # APP_FOLDER = folder containing the app, loaded from .env file
     build: ./${APP_FOLDER}
-    # FLASK_APP = flask entrypoint, loaded from .env file (`flask_app` in this example)
+    # FLASK_APP = flask entrypoint, loaded from .env file
     command: gunicorn -c gunicorn.ini.py ${FLASK_APP}:app
     environment:
       # FLASK_ENV = flask environment, loaded from .env file
