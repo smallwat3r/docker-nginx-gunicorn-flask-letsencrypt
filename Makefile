@@ -14,15 +14,14 @@ help:
 	@echo "make dc-start-local"
 	@echo "  Start docker app for local dev (w/o nginx)."
 
-dc-start:
-	@docker-compose stop;
-	@docker-compose build;
-	@docker-compose up -d;
-
 dc-stop:
 	@docker-compose stop;
 
-dc-start-local:
-	@docker-compose stop;
+dc-build:
 	@docker-compose build;
+
+dc-start: dc-stop dc-build
+	@docker-compose up -d;
+
+dc-start-local: dc-stop dc-build
 	@docker-compose up --scale nginx=0;
