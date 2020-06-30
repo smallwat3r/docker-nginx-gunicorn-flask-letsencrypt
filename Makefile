@@ -1,27 +1,21 @@
 include .env
 
 .PHONY: help dc-start dc-stop dc-start-local
-.DEFAULT: help
 
-help:
-	@echo "List of available commands"
-	@echo "(Note that you might need to run these commands with 'sudo')"
+help: ## Show this help menu
+	@echo "Usage: make [TARGET ...]"
 	@echo ""
-	@echo "make dc-start"
-	@echo "  Start app in docker."
-	@echo "make dc-stop"
-	@echo "  Stop docker app."
-	@echo "make dc-start-local"
-	@echo "  Start docker app for local dev (w/o nginx)."
+	@grep --no-filename -E '^[a-zA-Z_%-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+		awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
-dc-stop:
+dc-stop: ## Stop docker (might need sudo)
 	@docker-compose stop;
+
+dc-start: dc-stop dc-build ## Start docker (might need sudo)
+	@docker-compose up -d;
+
+dc-start-local: dc-stop dc-build ## Start docker for local dev (w/o nginx)
+	@docker-compose up --scale nginx=0;
 
 dc-build:
 	@docker-compose build;
-
-dc-start: dc-stop dc-build
-	@docker-compose up -d;
-
-dc-start-local: dc-stop dc-build
-	@docker-compose up --scale nginx=0;

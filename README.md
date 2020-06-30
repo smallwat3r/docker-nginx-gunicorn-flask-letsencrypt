@@ -78,12 +78,16 @@ sudo make dc-start
  🎉 Your web-app should now be running online with HTTPS 🎉   
 </p>
 
-**Other commands**
-```sh
-sudo make dc-stop        # Stop application.
-sudo make dc-start-local # Start application w/o nginx (for running locally)
+**All commands**
 
-make help                # List all the commands available from Makefile.
+```console
+% make help
+Usage: make [TARGET ...]
+
+help            Show this help menu
+dc-stop         Stop docker (might need sudo)
+dc-start        Start docker (might need sudo)
+dc-start-local  Start docker for local dev (w/o nginx)
 ```
 
 Auto checks are running weekly to update the certificates.  
