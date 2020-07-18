@@ -1,7 +1,11 @@
-# Author: Matthieu Petiteau <mpetiteau.pro@gmail.com>
-# In our nginx service with pass to our build the args
-# DOMAIN and FLASK so we can populate our nginx server
-# config automatically. see nginx/Dockerfile
+# docker-compose file managing Nginx and the application
+# Loading some variables from the .env file:
+#   - DOMAIN: DNS domain name
+#   - EMAIL: Maintainer email
+#   - APP_FOLDER: Directory containing the application
+#   - FLASK_APP: Flask entrypoint
+#   - FLASK_ENV: Flask environment
+
 version: "3.2"
 
 services:
@@ -9,11 +13,8 @@ services:
     build:
       context: ./nginx
       args:
-        # Pass domain name and email from .env file
         DOMAIN: ${DOMAIN}
         EMAIL: ${EMAIL}
-        # Pass the name of our docker-compose service to avoid having to update it in the
-        # nginx files if we want to change it
         FLASK: application
     ports:
       - 80:80
@@ -24,12 +25,9 @@ services:
       - application
 
   application:
-    # APP_FOLDER = folder containing the app, loaded from .env file
     build: ./${APP_FOLDER}
-    # FLASK_APP = flask entrypoint, loaded from .env file
     command: gunicorn -c gunicorn.ini.py ${FLASK_APP}:app
     environment:
-      # FLASK_ENV = flask environment, loaded from .env file
       - FLASK_ENV=${FLASK_ENV}
     ports:
       - 5000:5000

@@ -1,4 +1,3 @@
-# Author   : Matthieu Petiteau <mpetiteau.pro@gmail.com>
 # Nginx Dockerfile
 FROM nginx:1.18.0-alpine
 

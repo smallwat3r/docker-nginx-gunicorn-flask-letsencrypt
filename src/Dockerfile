@@ -1,4 +1,3 @@
-# Author   : Matthieu Petiteau <mpetiteau.pro@gmail.com>
 # Flask app Dockerfile
 FROM python:3.8.3-alpine3.11
 
