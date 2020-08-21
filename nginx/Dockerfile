@@ -1,5 +1,5 @@
 # Nginx Dockerfile
-FROM nginx:1.18.0-alpine
+FROM nginx:1.19-alpine
 
 # Install certbot for letsencrypt certificates
 RUN apk add --no-cache certbot

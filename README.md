@@ -13,8 +13,8 @@ and docker-compose.
 
 service | image
 --- | ---
-flask & gunicorn | `python:3.8.3-alpine3.11`
-nginx | `nginx:1.18.0-alpine`
+flask & gunicorn | `python:3.8-alpine`
+nginx | `nginx:1.19-alpine`
 
 ## Requirements
 
