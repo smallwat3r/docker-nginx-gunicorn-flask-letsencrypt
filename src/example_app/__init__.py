@@ -1,6 +1,9 @@
+# Mini Flask example app.
 from flask import Flask
 
 app = Flask(__name__)
 
 
-from . import views
+@app.route("/")
+def root():
+    return "Hello, world."
