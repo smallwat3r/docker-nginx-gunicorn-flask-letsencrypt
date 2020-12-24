@@ -24,6 +24,7 @@ docker | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/a1664
 docker-compose | [commands for Debian / Ubuntu](https://gist.github.com/smallwat3r/05f4b4a7a8361901d23bfdd492e40870)
 make | `sudo apt install make`
 a domain or sub-domain | DNS A record needs to points to your server static IP
+open ports | 80 (http) and 443 (https)
 
 ## Setting things up
 
