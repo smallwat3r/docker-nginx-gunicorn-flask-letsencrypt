@@ -74,7 +74,7 @@ FLASK_APP=example_app
 If you're running your own application and not the example one from 
 this repository you probably need to update or replace the `src/Dockerfile` to 
 your needs (in terms of dependencies etc). It's also known that some Python 
-projects have a hard time running from Python's Alpine images, so you might 
+projects can have a hard time running from Python's Alpine images, so you might 
 want/need to switch to a more standard `python:3.8` image.  
 
 ## Turning it on
