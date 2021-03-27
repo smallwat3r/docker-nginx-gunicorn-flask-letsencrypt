@@ -1,6 +1,6 @@
 include .env
 
-.PHONY: help dc-start dc-stop dc-start-local
+.PHONY: help dc-start dc-stop dc-start-local dc-build
 
 help: ## Show this help menu
 	@echo "Usage: make [TARGET ...]"
