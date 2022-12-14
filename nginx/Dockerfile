@@ -2,7 +2,8 @@
 FROM nginx:1.19-alpine
 
 # Install certbot for letsencrypt certificates
-RUN apk add --no-cache certbot
+# Install also an init handler for alpine cron
+RUN apk add --no-cache certbot openrc busybox-initscripts
 
 # Replace existing files by our own configs
 RUN rm /etc/nginx/nginx.conf && rm /etc/nginx/conf.d/default.conf
