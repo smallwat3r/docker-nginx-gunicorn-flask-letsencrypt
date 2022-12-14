@@ -26,8 +26,8 @@ ENV DOLLAR='$'
 # Substitute contents and write a new application.conf file, which is imported
 # by nginx.conf
 RUN envsubst \
-  </etc/nginx/conf.d/flask_app.conf \
-  >/etc/nginx/conf.d/application.conf \
+      </etc/nginx/conf.d/flask_app.conf \
+      >/etc/nginx/conf.d/application.conf \
   && rm /etc/nginx/conf.d/flask_app.conf
 
 # Directory needed for LetEncrypt certificates renewal
