@@ -6,7 +6,6 @@
 #   - FLASK_APP: Flask entrypoint
 #   - FLASK_ENV: Flask environment
 
-version: "3.2"
 
 services:
   nginx:
