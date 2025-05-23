@@ -7,7 +7,7 @@ help: ## Show this help menu
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
 start: stop build ## Start docker
-	@docker compose --env-file=certbot.env up -d
+	@docker compose up -d
 
 start-local: stop build ## Start docker for local dev (w/o nginx and certbot)
 	@docker compose up --scale nginx=0
@@ -16,4 +16,4 @@ stop: ## Stop docker
 	@docker compose stop
 
 build: ## (re)build Docker images
-	@docker compose --env-file=certbot.env build
+	@docker compose build

@@ -4,11 +4,11 @@ services:
     build:
       context: ./nginx
       args:
-        # passed from the certbot.env file
-        DOMAIN: ${DOMAIN}
-        EMAIL: ${EMAIL}
         # reference the app target in this compose file
         APP: app  # do not change me
+    env_file:
+      # load Certbot configs
+      - certbot.env
     ports:
       - 80:80
       - 443:443

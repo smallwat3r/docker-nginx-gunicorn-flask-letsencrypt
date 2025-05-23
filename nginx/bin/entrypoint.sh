@@ -1,4 +1,7 @@
 #!/bin/sh
 
-certbot certonly --standalone -d "${1}" --email "${2}" -n --agree-tos --expand
+: "${DOMAIN:?DOMAIN is not set or is empty}"
+: "${EMAIL:?EMAIL is not set or is empty}"
+
+certbot certonly --standalone -d "${DOMAIN}" --email "${EMAIL}" -n --agree-tos --expand
 /usr/sbin/crond && /usr/sbin/nginx -g "daemon off;"
