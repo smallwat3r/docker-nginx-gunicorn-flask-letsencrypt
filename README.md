@@ -84,11 +84,13 @@ Your app should now be running online with HTTPS!
 
 ```bash
 $ make help
+Usage: make [TARGET ...]
 
-help         Show this help menu  
-stop         Stop Docker containers  
-start        Start in production mode  
-start-local  Start in local dev mode (without Nginx)
+help            Show this help menu
+start           Start docker
+start-local     Start docker for local dev (w/o nginx and certbot)
+stop            Stop docker
+build           (re)build Docker images
 ```
 
 ## License

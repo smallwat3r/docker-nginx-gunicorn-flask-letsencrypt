@@ -6,14 +6,14 @@ help: ## Show this help menu
 	@grep --no-filename -E '^[a-zA-Z_%-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
-stop: ## Stop docker
-	@docker compose stop
-
 start: stop build ## Start docker
 	@docker compose --env-file=certbot.env up -d
 
 start-local: stop build ## Start docker for local dev (w/o nginx and certbot)
 	@docker compose up --scale nginx=0
 
-build:
+stop: ## Stop docker
+	@docker compose stop
+
+build: ## (re)build Docker images
 	@docker compose --env-file=certbot.env build
