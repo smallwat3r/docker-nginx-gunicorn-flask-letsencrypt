@@ -1,6 +1,4 @@
-include .env
-
-.PHONY: help dc-start dc-stop dc-start-local dc-build
+.PHONY: help start stop start-local build
 
 help: ## Show this help menu
 	@echo "Usage: make [TARGET ...]"
@@ -8,14 +6,14 @@ help: ## Show this help menu
 	@grep --no-filename -E '^[a-zA-Z_%-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
-dc-stop: ## Stop docker (might need sudo)
-	@docker compose stop;
+start: stop build ## Start docker
+	@docker compose up -d
 
-dc-start: dc-stop dc-build ## Start docker (might need sudo)
-	@docker compose up -d;
+start-local: stop build ## Start docker for local dev (w/o nginx and certbot)
+	@docker compose up --scale nginx=0
 
-dc-start-local: dc-stop dc-build ## Start docker for local dev (w/o nginx)
-	@docker compose up --scale nginx=0;
+stop: ## Stop docker
+	@docker compose stop
 
-dc-build:
-	@docker compose build;
+build: ## (re)build Docker images
+	@docker compose build

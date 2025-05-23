@@ -1,43 +1,24 @@
-# Nginx Dockerfile
-FROM nginx:1.19-alpine
+FROM nginx:alpine-slim
 
-# Install certbot for letsencrypt certificates
-# Install also an init handler for alpine cron
-RUN apk add --no-cache certbot openrc busybox-initscripts
+RUN echo 'https://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories && \
+    apk update && apk add --no-cache certbot busybox-suid
 
-# Replace existing files by our own configs
+# replace existing files by our own configs
 RUN rm /etc/nginx/nginx.conf && rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/
-COPY ./conf.d/flask_app.conf /etc/nginx/conf.d/
+COPY ./conf.d/app.conf /etc/nginx/conf.d/
 
-# We use a small hack with envsubst to pass variables to our Nginx config file.
-# The variables in Nginx needs to be in this specific format: ${FOO}. That's why
-# we create also a DOLLAR variable to add the "real" $ in our config flask_app.conf
-# ex: $host needs to be set as ${DOLLAR}host
-ARG DOMAIN
-ARG FLASK
-ARG EMAIL
+ARG APP
+# we're using `envsubst` to replace placeholders in the Nginx config.
+# to avoid conflicts, all actual dollar signs ($) in the config are replaced with ${DOLLAR}.
+# environment variables like DOMAIN and EMAIL should already be set via the certbot.env file.
+ENV APP="${APP}" DOLLAR='$'
 
-ENV DOMAIN=$DOMAIN
-ENV FLASK=$FLASK
-ENV EMAIL=$EMAIL
-ENV DOLLAR='$'
+# location certbot will place the challenges for domain validation on renewal
+RUN mkdir -p /var/www/certbot/.well-known/acme-challenge
 
-# Substitute contents and write a new application.conf file, which is imported
-# by nginx.conf
-RUN envsubst \
-      </etc/nginx/conf.d/flask_app.conf \
-      >/etc/nginx/conf.d/application.conf \
-  && rm /etc/nginx/conf.d/flask_app.conf
-
-# Directory needed for LetEncrypt certificates renewal
-RUN mkdir /var/lib/certbot
-
-# App entrypoint and auto-renewal scripts
 COPY ./bin/entrypoint.sh /entrypoint.sh
 COPY ./bin/renew /etc/periodic/weekly/renew
-RUN chmod +x /entrypoint.sh \
-  && chmod +x /etc/periodic/weekly/renew
+RUN chmod +x /entrypoint.sh /etc/periodic/weekly/renew
 
-# Install certificates and launch
-ENTRYPOINT ../entrypoint.sh $DOMAIN $EMAIL
+ENTRYPOINT ../entrypoint.sh
