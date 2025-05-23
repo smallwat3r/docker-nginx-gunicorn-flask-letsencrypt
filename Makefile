@@ -12,9 +12,9 @@ stop: ## Stop docker (might need sudo)
 	@docker compose stop;
 
 start: dc-stop dc-build ## Start docker (might need sudo)
-	@docker compose up -d;
+	@docker compose up --env-file=certbot.env -d;
 
-start-local: dc-stop dc-build ## Start docker for local dev (w/o nginx)
+start-local: dc-stop dc-build ## Start docker for local dev (w/o nginx and certbot)
 	@docker compose up --scale nginx=0;
 
 build:

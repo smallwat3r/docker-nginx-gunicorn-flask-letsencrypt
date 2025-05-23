@@ -48,17 +48,15 @@ sudo usermod -aG docker "${USER}"
 
 ### 3. Configure environment variables
 
-Edit the `.env` file:
+Edit the `certbot.env` file:
 
-- `EMAIL`: Email to receive Let's Encrypt renewal notices  
+- `EMAIL`: Email for Certbot (receive alerts)
 - `DOMAIN`: Your domain or subdomain
 
-Also check and update (if necessary):
+Also you should check and update (if necessary):
 
-- `flask.env` for your Flask app environment  
+- `flask.env` for your Flask app environment variables
 - `src/gunicorn.conf.py` for Gunicorn settings
-
----
 
 ## Notes
 
