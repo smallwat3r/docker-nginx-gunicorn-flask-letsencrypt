@@ -1,13 +1,14 @@
 services:
   nginx:
+    container_name: dngfl-nginx
     build:
       context: ./nginx
       args:
-        # passed from the .env file
+        # passed from the certbot.env file
         DOMAIN: ${DOMAIN}
         EMAIL: ${EMAIL}
-        # reference the app in this dockerfile target
-        APP: app
+        # reference the app target in this compose file
+        APP: app  # do not change me
     ports:
       - 80:80
       - 443:443
@@ -16,6 +17,7 @@ services:
     depends_on:
       - app
   app:
+    container_name: dngfl-app
     build:
       context: ./src
     env_file:

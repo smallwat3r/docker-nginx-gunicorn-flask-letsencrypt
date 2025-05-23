@@ -63,7 +63,7 @@ Also you should check and update (if necessary):
 This is a **starter boilerplate**, meant to be customized. You’ll likely want to:
 
 - Replace the example app in `src/`
-- Update `src/Dockerfile` for your dependencies
+- Update `src/Dockerfile` for your dependencies, or slightly change the Gunicorn command required to start your app
 - Edit `nginx/conf.d/app.conf` for your specific reverse proxy needs (e.g., CSP headers)
 
 ## Running the Application
