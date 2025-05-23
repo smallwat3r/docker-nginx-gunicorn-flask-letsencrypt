@@ -1,7 +1,7 @@
 FROM nginx:alpine-slim
 
 RUN echo 'https://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories && \
-    apk update && apk add --no-cache certbot openrc busybox-extras
+    apk update && apk add --no-cache certbot busybox-suid
 
 # replace existing files by our own configs
 RUN rm /etc/nginx/nginx.conf && rm /etc/nginx/conf.d/default.conf
@@ -14,8 +14,8 @@ ARG APP
 # environment variables like DOMAIN and EMAIL should already be set via the certbot.env file.
 ENV APP="${APP}" DOLLAR='$'
 
-# required for certbot renewal
-RUN mkdir /var/lib/certbot
+# location certbot will place the challenges for domain validation on renewal
+RUN mkdir /var/www/certbot
 
 COPY ./bin/entrypoint.sh /entrypoint.sh
 COPY ./bin/renew /etc/periodic/weekly/renew
