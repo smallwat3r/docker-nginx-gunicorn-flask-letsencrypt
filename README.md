@@ -41,10 +41,8 @@ cd docker-nginx-gunicorn-flask-letsencrypt-master
 ### 2. Add your user to the Docker group
 
 ```bash
-sudo usermod -aG docker "${USER}"
+sudo usermod -aG docker "${USER}" && newgrp docker
 ```
-
-> **Note:** Log out and back in for this change to take effect.
 
 ### 3. Configure environment variables
 
