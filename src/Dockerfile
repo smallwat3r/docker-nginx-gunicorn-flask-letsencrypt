@@ -1,45 +1,22 @@
-# Flask app Dockerfile
-FROM python:3.8-alpine
+FROM python:3.13-slim
 
-# Install needed dependencies for our app to run.
-RUN apk update \
-  && apk add --no-cache \
-    gcc \
-    libffi-dev \
-    musl-dev
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_DEFAULT_TIMEOUT=100
 
-WORKDIR /opt/app
+WORKDIR /app
 
-# App non-root user
-ENV GROUP=app
-ENV USER=flask
-ENV UID=12345
-ENV GID=23456
-RUN addgroup --gid "$GID" "$GROUP" \
-  && adduser --uid "$UID" \
-    --disabled-password \
-    --gecos "" \
-    --ingroup "$GROUP" \
-    "$USER"
+RUN groupadd --system appuser && \
+    useradd --system --create-home --gid appuser --shell /sbin/nologin appuser
 
-# Switch to the non-root user
-USER "$USER"
-ENV PATH="/home/$USER/.local/bin:${PATH}"
+USER appuser
+ENV PATH="/home/appuser/.local/bin:${PATH}"
 
-# Copy requirements file to our container, install, and remove
-# files to we don't need to reduce the container size
 COPY requirements.txt .
-RUN pip install \
-    --no-cache-dir \
-    --no-warn-script-location \
-    --user \
-    -r requirements.txt \
-  && find "/home/$USER/.local" \
-    \( -type d -a -name test -o -name tests \) \
-    -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
-    -exec rm -rf '{}' +
+RUN pip install --user -r requirements.txt
 
-# Copy app to container (with privileges to non-root user)
-COPY --chown=$USER:$GROUP . .
+COPY --chown=appuser:appuser . .
 
-# Gunicorn is run from the docker-compose file
+CMD ["gunicorn", "-c", "gunicorn.conf.py", "app:app"]

@@ -1,32 +1,25 @@
-# docker-compose file managing Nginx and the application
-# Loading some variables from the .env file:
-#   - DOMAIN: DNS domain name
-#   - EMAIL: Maintainer email
-#   - APP_FOLDER: Directory containing the application
-#   - FLASK_APP: Flask entrypoint
-#   - FLASK_ENV: Flask environment
-
-
 services:
   nginx:
     build:
       context: ./nginx
       args:
+        # passed from the .env file
         DOMAIN: ${DOMAIN}
         EMAIL: ${EMAIL}
-        FLASK: application
+        # reference the app in this dockerfile target
+        APP: app
     ports:
       - 80:80
       - 443:443
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
     depends_on:
-      - application
-
-  application:
-    build: ./${APP_FOLDER}
-    command: gunicorn --bind 0.0.0.0:5000 --workers 3 ${FLASK_APP}:app
-    environment:
-      - FLASK_ENV=${FLASK_ENV}
+      - app
+  app:
+    build:
+      context: ./src
+    env_file:
+      # load Flask env configs
+      - flask.env
     ports:
-      - 5000:5000
+      - 8080:8080
