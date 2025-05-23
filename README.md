@@ -21,7 +21,7 @@ This repository is a Docker-based boilerplate for deploying a Flask web applicat
 
 | Dependency | Installation |
 |------------|--------------|
-| Docker     | [Install Docker](https://docs.docker.com/engine/install/debian/#install-using-the-repository) |
+| Docker     | [Install Docker](https://docs.docker.com/engine/install/) |
 | Make       | `sudo apt install make` |
 
 Other prerequisites:
