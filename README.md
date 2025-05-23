@@ -80,7 +80,7 @@ Your app should now be running online with HTTPS!
 
 ### All available commands
 
-```bash
+```
 $ make help
 Usage: make [TARGET ...]
 
