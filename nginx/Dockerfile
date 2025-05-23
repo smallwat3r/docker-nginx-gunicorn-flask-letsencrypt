@@ -15,7 +15,7 @@ ARG APP
 ENV APP="${APP}" DOLLAR='$'
 
 # location certbot will place the challenges for domain validation on renewal
-RUN mkdir /var/www/certbot
+RUN mkdir -p /var/www/certbot
 
 COPY ./bin/entrypoint.sh /entrypoint.sh
 COPY ./bin/renew /etc/periodic/weekly/renew
