@@ -1,9 +1,6 @@
-<h3 align="center">docker-nginx-gunicorn-flask-letsencrypt</h3>
-<p align="center">Boilerplate code for setting up Nginx + Gunicorn + Flask + LetsEncrypt certs using Docker.</p>
+# Docker-nginx-gunicorn-flask-letsencrypt
 
----
-
-This repository contains necessary files to run a web server with Nginx <-> Gunicorn <-> Flask with LetsEncrypt (Certbot) using Docker.
+This repository is a boilerplate to run a web server with Nginx <-> Gunicorn <-> Flask with LetsEncrypt (Certbot) using Docker.
 
 ## Docker
 
@@ -50,15 +47,13 @@ This repo is just a boilerplate designed to build from. You will likely use your
  
 ## Turning it on
 
-Note that depending on your user, you might need to run those commands with sudo.
+Note that depending on your setup, you might need to run those commands with sudo.
 
 **Start application**
 
     make start
 
-<p style="text-align: center;">
- 🎉 Your web-app should now be running online with HTTPS 🎉   
-</p>
+Your app should now be running online with HTTPS!  
 
 **All commands**
 
