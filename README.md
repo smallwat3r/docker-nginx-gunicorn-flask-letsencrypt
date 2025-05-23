@@ -1,11 +1,11 @@
 # Docker + Nginx + Gunicorn + Flask + Let's Encrypt
 
-This repository is a Docker-based boilerplate for deploying a Flask web application in production. It uses:
+This repository is a Docker-based boilerplate for deploying a Flask web app with:
 
 - **Nginx** as a reverse proxy  
 - **Gunicorn** as the WSGI server  
 - **Flask** for the web application  
-- **Let's Encrypt (Certbot)** for free HTTPS  
+- **Let's Encrypt (Certbot)** for free HTTPS and auto renewals  
 - **Docker** for easy deployment and reproducibility
 
 ## Docker Services
