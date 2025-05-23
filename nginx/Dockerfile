@@ -21,4 +21,4 @@ COPY ./bin/entrypoint.sh /entrypoint.sh
 COPY ./bin/renew /etc/periodic/weekly/renew
 RUN chmod +x /entrypoint.sh /etc/periodic/weekly/renew
 
-ENTRYPOINT ../entrypoint.sh
+ENTRYPOINT ["../entrypoint.sh"]
