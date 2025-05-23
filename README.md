@@ -1,84 +1,110 @@
-# Docker-nginx-gunicorn-flask-letsencrypt
+# Docker + Nginx + Gunicorn + Flask + Let's Encrypt
 
-This repository is a boilerplate to run a web server with Nginx <-> Gunicorn <-> Flask with LetsEncrypt (Certbot) using Docker.
+This repository is a Docker-based boilerplate for deploying a Flask web application in production. It uses:
 
-## Docker
+- **Nginx** as a reverse proxy  
+- **Gunicorn** as the WSGI server  
+- **Flask** for the web application  
+- **Let's Encrypt (Certbot)** for free HTTPS  
+- **Docker** for easy deployment and reproducibility
 
-service | image
---- | ---
-app | `python:3.13-slim`
-nginx | `nginx:alpine-slim`
+## Docker Services
+
+| Service | Image              |
+|---------|--------------------|
+| app     | `python:3.13-slim` |
+| nginx   | `nginx:alpine-slim` |
+
+---
 
 ## Requirements
 
-dependency | commands
---- | ---
-docker | [Documentation](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
-make | `sudo apt install make`
+| Dependency | Installation |
+|------------|--------------|
+| Docker     | [Install Docker](https://docs.docker.com/engine/install/debian/#install-using-the-repository) |
+| Make       | `sudo apt install make` |
 
-Other:
-- a domain or sub-domain with a DNS A record pointing to your server's static IP
-- open ports on server: 80 (http) and 443 (https)
+Other prerequisites:
 
-## Setting things up
+- A domain or subdomain with a DNS A record pointing to your server's static IP  
+- Open ports **80** (HTTP) and **443** (HTTPS)
 
-#### 1) Get the code on your server
+##  Setup Instructions
 
-    curl -L https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/archive/refs/heads/master.tar.gz | tar -xz
-    cd docker-nginx-gunicorn-flask-letsencrypt-master
+### 1. Clone the repository on your server
 
-#### 2) Add current user to `docker` group  
+```bash
+curl -L https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/archive/refs/heads/master.tar.gz | tar -xz
+cd docker-nginx-gunicorn-flask-letsencrypt-master
+```
 
-    sudo usermod -aG docker "${USER}"
+### 2. Add your user to the Docker group
 
-Log out from the server and log back in for changes to apply.  
+```bash
+sudo usermod -aG docker "${USER}"
+```
 
-#### 3) Define your configurations
+> **Note:** Log out and back in for this change to take effect.
 
-Set up your configuration in the `.env` file:
-- `EMAIL`: email to get alerts from LetsEncrypt
-- `DOMAIN`: the domain (or subdomain) to use
+### 3. Configure environment variables
 
-It is also recommended to update or add any missing values required for your setup in `flask.env` and in `src/gunicorn.conf.py`
+Edit the `.env` file:
 
-## Side note
+- `EMAIL`: Email to receive Let's Encrypt renewal notices  
+- `DOMAIN`: Your domain or subdomain
 
-This repo is just a boilerplate designed to build from. You will likely use your own app and not the provided one by this boilerplate, so you will probably need to update `src/Dockerfile` and install any required dependencies or change a few things. The same is true for `nginx/conf.d/app.conf`, it is possible you will need to change the CSP to be more lax.
- 
-## Turning it on
+Also check and update (if necessary):
 
-Note that depending on your setup, you might need to run those commands with sudo.
+- `flask.env` for your Flask app environment  
+- `src/gunicorn.conf.py` for Gunicorn settings
 
-**Start application**
+---
 
-    make start
+## Notes
 
-Your app should now be running online with HTTPS!  
+This is a **starter boilerplate**, meant to be customized. You’ll likely want to:
 
-**All commands**
+- Replace the example app in `src/`
+- Update `src/Dockerfile` for your dependencies
+- Edit `nginx/conf.d/app.conf` for your specific reverse proxy needs (e.g., CSP headers)
 
-    % make help
-    Usage: make [TARGET ...]
+## Running the Application
 
-    help         Show this help menu
-    stop         Stop docker (might need sudo)
-    start        Start docker (might need sudo)
-    start-local  Start docker for local dev (w/o nginx)
+> You may need `sudo` to run Docker commands depending on your setup.
 
-Auto checks are running weekly to update the certificates.  
+### Start the app
+
+```bash
+make start
+```
+
+Your app should now be running online with HTTPS!
+
+> SSL certificates are automatically renewed weekly.
+
+### All available commands
+
+```bash
+$ make help
+
+help         Show this help menu  
+stop         Stop Docker containers  
+start        Start in production mode  
+start-local  Start in local dev mode (without Nginx)
+```
 
 ## License
 
-See [LICENSE](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/blob/master/LICENSE) file.  
+Licensed under the [MIT License](LICENSE).
 
-## Contact
+## Support
 
-Please report issues or questions 
-[here](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/issues).
+Have a question or issue?  
+Open one on the [GitHub Issues page](https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/issues)
 
+---
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
-
-[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
+[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg  
 [buymeacoffee]: https://www.buymeacoffee.com/smallwat3r
