@@ -31,7 +31,9 @@ Other prerequisites:
 
 ##  Setup Instructions
 
-### 1. Clone the repository on your server
+### 1. Get the code on your server
+
+Use curl to download a compressed tarball of the repository from GitHub, so there is no need to install git on the server.
 
 ```bash
 curl -L https://github.com/smallwat3r/docker-nginx-gunicorn-flask-letsencrypt/archive/refs/heads/master.tar.gz | tar -xz
